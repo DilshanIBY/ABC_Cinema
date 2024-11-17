@@ -1,0 +1,1 @@
+// Placeholder content for Chatbot.jsp
