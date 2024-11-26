@@ -448,8 +448,6 @@ footer {
 /* RESERVATIONS PAGE Styles */
 /*//////////////////////*/
 
-/* RESERVATION PAGE Styles */
-
 /* General Styles */
 * {
   margin: 0;
@@ -832,7 +830,6 @@ body {
   .confirm-btn:hover {
     background-color: #92601f;
   }
-  
 
   /* Responsive Layout */
   @media (max-width: 768px) {
@@ -850,7 +847,6 @@ body {
     }
   }
   
-
   /* Styling for the Theater Info Section */
 .theater-info {
   background: #fff; /* White background */
