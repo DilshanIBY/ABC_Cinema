@@ -22,11 +22,13 @@
             List<Movie> movies = movieController.getAllMovies();
         %>
 
+
         <!-- Now Showing Section -->
         <section>
             <h2 class="section-title">Now Showing</h2>
             <div class="swiper nowShowingSwiper">
                 <div class="swiper-wrapper">
+
                     <%
                         if (movies != null) {
                             for (Movie movie : movies) {
@@ -53,6 +55,7 @@
                     <%
                         }
                     %>
+
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -65,6 +68,7 @@
             <h2 class="section-title">Coming Soon</h2>
             <div class="swiper upcomingSwiper">
                 <div class="swiper-wrapper">
+
                     <%
                         if (movies != null) {
                             for (Movie movie : movies) {
@@ -92,6 +96,7 @@
                     <%
                         }
                     %>
+
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
