@@ -1,0 +1,1115 @@
+/*/////////////////////*/
+ /* HOME PAGE Styles */
+/*/////////////////////*/
+
+:root {
+    --gold: #cda45e;
+    --chocolate: #0c0b09;
+    --oil: #1a1814;
+    --black: #000000;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    background-color: var(--black);
+    color: white;
+}
+ /* Header Styles */
+header {
+    background: linear-gradient(-50deg, #cda45e, #0c0b09, #1a1814, #ffcc00, #000000);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+header * {
+    position: relative;
+    z-index: 2;
+}
+
+.logo {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Navigation Styles */
+nav {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.1);
+    color: #e1ad21;
+}
+
+.section-title {
+    color: var(--gold);
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.swiper {
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+.movie-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    height: 500px;
+    transition: transform 0.3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+}
+
+.movie-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 1rem;
+    background: linear-gradient(to top, var(--chocolate), var(--oil));
+}
+
+.movie-title {
+    color: var(--gold);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.movie-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.book-btn {
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--gold);
+    border: none;
+    border-radius: 25px;
+    color: var(--black);
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.book-btn:hover {
+    background: #ddb76e;
+    transform: scale(1.05);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--gold) !important;
+}
+
+.swiper-pagination-bullet {
+    background: var(--gold) !important;
+}
+
+.movies-container {
+    padding: 2rem 0;
+    background: linear-gradient(180deg, var(--black) 0%, var(--oil) 100%);
+}
+ /* Footer Styles */
+footer {
+    background: linear-gradient(-45deg, #1a1a1a, #2a2a2a);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: justify;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.footer-section h3 {
+    color:#cda45e ;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color:#cda45e ;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .logo {
+        font-size: 3rem;
+    }
+
+    .swiper-slide {
+        width: 300px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/*//////////////////////////////*/
+ /* LOGIN-REGISTER PAGE Styles */
+/*/////////////////////////////*/
+
+:root {
+    --main-color: #cda45e;
+    --secondary-color: #0c0b09;
+    --tertiary-color: #1a1814;
+    --black-color: #000000;
+}
+
+#login-register {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.auth-container {
+    max-width: 450px;
+    width: 100%;
+    margin: auto;
+}
+
+.auth-card {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(205, 164, 94, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.auth-title {
+    color: var(--main-color);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+    color: #888;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-label {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    background-color: var(--tertiary-color);
+    border: 1px solid rgba(205, 164, 94, 0.2);
+    color: #fff;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+}
+
+.form-control:focus {
+    background-color: var(--tertiary-color);
+    border-color: var(--main-color);
+    box-shadow: none;
+    color: #fff;
+}
+
+.input-group-text {
+    background-color: transparent;
+    border: none;
+    color: #888;
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    color: #888;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: color 0.3s;
+}
+
+.password-toggle:hover {
+    color: #ccc;
+}
+
+.input-group {
+    position: relative;
+}
+
+.btn-primary {
+    background-color: var(--main-color);
+    border: none;
+    color: var(--secondary-color);
+    padding: 0.8rem;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: rgba(205, 164, 94, 0.9);
+}
+
+.auth-footer {
+    text-align: center;
+    color: #888;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.auth-footer a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.auth-footer a:hover {
+    color: rgba(205, 164, 94, 0.8);
+}
+
+.form-check-input:checked {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.form-check-label {
+    color: #888;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 576px) {
+    .auth-card {
+        padding: 1.5rem;
+    }
+}
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* MOVIES PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Now Showing Section */
+.now-showing {
+    /* Add your styles here */
+}
+
+/* Styles for Coming Soon Section */
+.coming-soon {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* RESERVATIONS PAGE Styles */
+/*//////////////////////*/
+
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Cursive;
+  color: #333;
+}
+
+/* Theater List Grid */
+.theater-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 40px 10px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.theater-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theater-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px #cd8c38;
+}
+
+.theater-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.theater-card:hover img {
+  transform: scale(1.1);
+}
+
+.theater-card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.theater-card h3 {
+  font-size: 1.5rem;
+  color: #cd8c38;
+}
+
+.theater-card p {
+  font-size: 0.9rem;
+  margin: 10px 0;
+  color: #555;
+}
+
+.theater-card a {
+  display: inline-block;
+  margin-top: 15px;
+  text-decoration: none;
+  background: #cd8c38;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+}
+
+.theater-card a:hover {
+  
+  display: inline-block;
+    padding: .5rem 1rem;
+    background-color: #cd8c38;
+    border-radius: 2rem;
+    color: #1e1f26;
+    transition: .3s
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*Seat design*/
+/*.center {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #c8c6c2;
+        
+      }*/
+      .tickets {
+        width: 550px;
+        height: fit-content;
+        border: 0.4mm solid rgba(0, 0, 0, 0.08);
+        border-radius: 3mm;
+        box-sizing: border-box;
+        padding: 10px;
+        font-family: Cursive;
+        max-height: 96vh;
+        overflow: auto;
+        background: white;
+        box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+
+      .tickets:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 20px #cd8c38;
+      }
+    
+      .ticket-selector {
+        background: linear-gradient(45deg, rgba(255, 255, 255, .05), rgba(205, 140, 56, .15));
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        box-sizing: border-box;
+        padding: 20px;
+      }
+      
+
+      .head {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+      .title {
+        font-size: 16px;
+        font-weight: 600;
+        color:#cd8c38;
+      }
+      .seats {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        min-height: 150px;
+        position: relative;
+      }
+      .status {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+      .seats::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 220px;
+        height: 7px;
+        background: rgb(141, 198, 255);
+        border-radius: 0 0 3mm 3mm;
+        border-top: 0.3mm solid rgb(180, 180, 180);
+      }
+      .item {
+        font-size: 12px;
+        position: relative;
+      }
+      .item::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -12px;
+        transform: translate(0, -50%);
+        width: 10px;
+        height: 10px;
+        background: rgb(255, 255, 255);
+        outline: 0.2mm solid rgb(120, 120, 120);
+        border-radius: 0.3mm;
+      }
+      .item:nth-child(2)::before {
+        background: rgb(180, 180, 180);
+        outline: none;
+      }
+      .item:nth-child(3)::before {
+        background:#cd8c38;
+        outline: none;
+      }
+      .all-seats {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-gap: 15px;
+        margin: 60px 0;
+        margin-top: 20px;
+        position: relative;
+      }
+      .seat {
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 0.5mm;
+        outline: 0.3mm solid rgb(180, 180, 180);
+        cursor: pointer;
+      }
+      .all-seats input:checked + label {
+        background:#cd8c38;
+        outline: none;
+      }
+      .seat.booked {
+        background: rgb(180, 180, 180);
+        outline: none;
+      }
+      input {
+        display: none;
+      }
+      .timings {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      .dates {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .dates-item {
+        width: 50px;
+        height: 40px;
+        background: rgb(233, 233, 233);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px 0;
+        border-radius: 2mm;
+        cursor: pointer;
+      }
+      .day {
+        font-size: 12px;
+      }
+      .times {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+      .time {
+        font-size: 14px;
+        width: fit-content;
+        padding: 7px 14px;
+        background: rgb(233, 233, 233);
+        border-radius: 2mm;
+        cursor: pointer;
+      }
+      .timings input:checked + label {
+        background:#cd8c38;
+        color: white;
+      }
+      .price {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .total {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .total span {
+        font-size: 11px;
+        font-weight: 400;
+      }
+      .price button {
+        background: #cd8c38;
+        color: white;
+        font-family: poppins;
+        font-size: 14px;
+        padding: 7px 14px;
+        border-radius: 2mm;
+        outline: none;
+        border: none;
+        cursor: pointer;
+      }
+    
+
+/* Gallery Section Styling */
+  .section-gallery {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .section-gallery h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .gallery-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    margin-top: 5px;
+  }
+  
+  .summary-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  h2 {
+    color: #cd8c38;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+ 
+  section {
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+  }
+  
+  ul li {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  
+  .confirm-btn {
+    display: block;
+    width: 200px;
+    margin: 30px auto;
+    padding: 12px 20px;
+    background-color: #1e1f26;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #cd8c38;
+    color: #1e1f26;
+    transition: .3s;
+  }
+  
+  .confirm-btn:hover {
+    background-color: #92601f;
+  }
+
+  /* Responsive Layout */
+  @media (max-width: 768px) {
+    .summary-container {
+      padding: 15px;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    .confirm-btn {
+      width: 100%;
+      font-size: 1rem;
+    }
+  }
+  
+  /* Styling for the Theater Info Section */
+.theater-info {
+  background: #fff; /* White background */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding inside the box */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for elevation */
+  margin-bottom: 20px; /* Space between boxes */
+/*  align-items: center;*/
+}
+.theater-info:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px #cd8c38;
+}
+
+.movie-details {
+  background: #fff; /* White background */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;  /*Padding inside the box */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for elevation */
+  margin-bottom: 20px; /* Space between boxes */
+  width:500px;
+  margin: 0 auto;
+/*  height:500px;*/
+  
+}
+
+.movie-details:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px #cd8c38;
+  
+}
+
+.pricing {
+  background: #fff; /* White background */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding inside the box */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for elevation */
+  margin-bottom: 20px; /* Space between boxes */
+  width:500px;
+  margin: 0 auto;
+}
+
+.pricing:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px #cd8c38;
+}
+.payment-info{
+  background: #fff; /* White background */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding inside the box */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for elevation */
+  margin-bottom: 30px; /* Space between boxes */
+  width:500px;
+  margin: 0 auto;
+}
+
+.payment-info:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px #cd8c38;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* REGISTER PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Registration Form */
+.register-form {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* LOGIN PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Login Form */
+.login-form {
+    /* Add your styles here */
+}
+
+/* Styles for Forgot Password */
+.forgot-password {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* PAYMENT PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Order Summary */
+.order-summary {
+    /* Add your styles here */
+}
+
+/* Styles for Payment Method */
+.payment-method {
+    /* Add your styles here */
+}
+
+/* Styles for Checkout Button */
+.checkout-button {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* FEEDBACK PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Feedback Form */
+.feedback-form {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* PROFILE PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Upload Photo Section */
+.upload-photo {
+    /* Add your styles here */
+}
+
+/* Styles for Booking History */
+.booking-history {
+    /* Add your styles here */
+}
+
+/* Styles for Edit Profile */
+.edit-profile {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* CONTACT US PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Location on Map */
+.location-map {
+    /* Add your styles here */
+}
+
+/* Styles for Contact Form */
+.contact-form {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* CHATBOT PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Chat Messages */
+.chat-messages {
+    /* Add your styles here */
+}
+
+/* Styles for Send Message Button */
+.send-message {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* ERROR PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for 404 Page */
+.error-404 {
+    /* Add your styles here */
+}
+
+/* Styles for 500 Error Page */
+.error-500 {
+    /* Add your styles here */
+}

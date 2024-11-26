@@ -1,140 +1,8 @@
-////////////////////////////////////
-//////// HOME PAGE Scripts /////////
-////////////////////////////////////
-
-// Initialize Swiper for Now Showing
-const nowShowingSwiper = new Swiper('.nowShowingSwiper', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    loop: true,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
-    breakpoints: {
-        640: {
-            slidesPerView: 2,
-        },
-        1024: {
-            slidesPerView: 3,
-        },
-        1400: {
-            slidesPerView: 4,
-        }
-    }
-});
-
-// Initialize Swiper for Upcoming Movies
-const upcomingSwiper = new Swiper('.upcomingSwiper', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    loop: true,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    autoplay: {
-        delay: 3500,
-        disableOnInteraction: false,
-    },
-    breakpoints: {
-        640: {
-            slidesPerView: 2,
-        },
-        1024: {
-            slidesPerView: 3,
-        },
-        1400: {
-            slidesPerView: 4,
-        }
-    }
-});
-
-
-
-
-
-
-
-
-
-////////////////////////////////////
-/// LOGIN-REGISTER PAGE Scripts ////
-////////////////////////////////////
-
-function toggleForms() {
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
-
-    if (loginForm.style.display === 'none') {
-        registerForm.style.display = 'none';
-        loginForm.style.display = 'block';
-    } else {
-        loginForm.style.display = 'none';
-        registerForm.style.display = 'block';
-    }
-}
-
-function togglePassword(button) {
-    const input = button.parentElement.querySelector('input');
-    const icon = button.querySelector('i');
-
-    if (input.type === 'password') {
-        input.type = 'text';
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
-    } else {
-        input.type = 'password';
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
-    }
-}
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////
-//////// MOVIES PAGE Scripts ///////
-////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////
-/////// RESERVATIONS Scripts ///////
-////////////////////////////////////
-
 const theaters = [
   {
     name: "Liberty By Scope Cinemas - Colpetty",
     address: "37A Srimath Anagarika Dharmapala Mawatha, Colombo 00700",
-    image: "assets/img/theater1.jpg",
+    image: "assets/images/theater1.jpg",
     contact: "0112 325 266",
     description: "Two screens make up the Liberty cineplex, Liberty Lite and well, the main Liberty cinema. Conveniently located in the heart of Colombo, the cinema has a car park, which allows for easy access and also equipped with snack bar and cafetaria. Liberty .",
     owner: "Naveed Cader"
@@ -142,7 +10,7 @@ const theaters = [
   {
     name: "Scope Cinemas Multiplex - CCC",
     address: "City Centre, 137 Sir James Pieris Mawatha, Colombo 00200",
-    image: "assets/img/theater2.jpg",
+    image: "assets/images/theater2.jpg",
     contact: "0112 083 064",
     description: "Dedicated toward raising the bar in Sri Lanka’s cinema experience, Scope aims to provide our patrons with all the flare of old-school movie theaters, coupled with state-of-the-art modernity and comfort, consistent with international standards.",
     owner: "Mr. Eranga Jayawansa"
@@ -150,7 +18,7 @@ const theaters = [
   {
     name: "SkylineRio Cinema",
     address: "WVG2+2M6, Kumaran Ratnam Rd, Colombo 00200",
-    image: "assets/img/theater3.jpg",
+    image: "assets/images/theater3.jpg",
     contact: "0112 432 170",
     description: "Rio Cinema Theater is a renowned destination for movie enthusiasts, blending classic charm with modern facilities. Established in the early 1980s, it has been a cornerstone of Colombo's cinematic culture. Equipped with state-of-the-art 4K projection and Dolby Atmos sound, Rio offers an unparalleled viewing experience.",
     owner: "Mr. Suresh Fernando"
@@ -281,136 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <li><strong>Concessions:</strong> Popcorn and Drinks = $${concessions}</li>
       <li><strong>Total:</strong> $${totalPrice}</li>
     `;
-});
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////
-/////// REGISTER PAGE Scripts ///////
-////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////
-//////// LOGIN PAGE Scripts ////////
-////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////
-/////// PAYMENT PAGE Scripts ///////
-////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////
-/////// FEEDBACK PAGE Scripts ///////
-////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////
-//////// PROFILE PAGE Scripts ///////
-////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////
-/////// CONTACT US PAGE Scripts /////
-////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////
-//////// CHATBOT PAGE Scripts ///////
-////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////
-//////// ERROR PAGE Scripts /////////
-////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  });
+  
+  
+  
+  
