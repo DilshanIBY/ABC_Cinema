@@ -1,136 +1,247 @@
-/* HOME PAGE Styles */
+/*/////////////////////*/
+ /* HOME PAGE Styles */
+/*/////////////////////*/
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-.footerbody{
-	line-height: 1.5;
-	font-family: 'Poppins', sans-serif;
+:root {
+    --gold: #cda45e;
+    --chocolate: #0c0b09;
+    --oil: #1a1814;
+    --black: #000000;
 }
-*{
-	margin:0;
-	padding:0;
-	box-sizing: border-box;
-}
-.container{
-	max-width: 1170px;
-	margin:auto;
-}
-.row{
-	display: flex;
-	flex-wrap: wrap;
-}
-ul{
-	list-style: none;
-}
-.footer{
-    background-color: #24262b;
-    padding: 70px 0;
-}
-.footer-col{
-   width: 25%;
-   padding: 0 15px;
-}
-.footer-col h4{
-	font-size: 18px;
-	color: #ffffff;
-	text-transform: capitalize;
-	margin-bottom: 35px;
-	font-weight: 500;
-	position: relative;
-}
-.footer-col h4::before{
-	content: '';
-	position: absolute;
-	left:0;
-	bottom: -10px;
-	background-color: #e91e63;
-	height: 2px;
-	box-sizing: border-box;
-	width: 50px;
-}
-.footer-col ul li:not(:last-child){
-	margin-bottom: 10px;
-}
-.footer-col ul li a{
-	font-size: 16px;
-	text-transform: capitalize;
-	color: #ffffff;
-	text-decoration: none;
-	font-weight: 300;
-	color: #bbbbbb;
-	display: block;
-	transition: all 0.3s ease;
-}
-.footer-col ul li a:hover{
-	color: #ffffff;
-	padding-left: 8px;
-}
-.footer-col .social-links a{
-	display: inline-block;
-	height: 40px;
-	width: 40px;
-	background-color: rgba(255,255,255,0.2);
-	margin:0 10px 10px 0;
-	text-align: center;
-	line-height: 40px;
-	border-radius: 50%;
-	color: #ffffff;
-	transition: all 0.5s ease;
-}
-.footer-col .social-links a:hover{
-	color: #24262b;
-	background-color: #ffffff;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-/*responsive*/
-@media(max-width: 767px){
-  .footer-col{
-    width: 50%;
-    margin-bottom: 30px;
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-@media(max-width: 574px){
-  .footer-col{
-    width: 100%;
+
+body {
+    background-color: var(--black);
+    color: white;
 }
-}
-.offers{
-    margin-top: 35px;
+ /* Header Styles */
+header {
+    background: linear-gradient(-50deg, #cda45e, #0c0b09, #1a1814, #ffcc00, #000000);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    padding: 2rem;
     text-align: center;
-    font-size: 20px;
-    font-weight: 700;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
-.card-body{
-    background-color: #24262b;
-    height: 216px;
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
-.card-title{
+
+header * {
+    position: relative;
+    z-index: 2;
+}
+
+.logo {
+    font-size: 4rem;
+    margin-bottom: 1rem;
     color: #ffffff;
-}
-.card-text{
-    color: #ffffff;
-}
-.card-text1{
-    color: #ffffff;
-    font-weight: 100;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-
-.imagecard img {
-    width: 180px;
-    height: 216px;
-}
-.imagecard1 img {
-    width: 180px;
-    height: 216px;
-}
-h5, p {
-    color: #ffffff;
+/* Navigation Styles */
+nav {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
 }
 
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.1);
+    color: #e1ad21;
+}
+
+.section-title {
+    color: var(--gold);
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.swiper {
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+.movie-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    height: 500px;
+    transition: transform 0.3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+}
+
+.movie-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 1rem;
+    background: linear-gradient(to top, var(--chocolate), var(--oil));
+}
+
+.movie-title {
+    color: var(--gold);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.movie-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.book-btn {
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--gold);
+    border: none;
+    border-radius: 25px;
+    color: var(--black);
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.book-btn:hover {
+    background: #ddb76e;
+    transform: scale(1.05);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--gold) !important;
+}
+
+.swiper-pagination-bullet {
+    background: var(--gold) !important;
+}
+
+.movies-container {
+    padding: 2rem 0;
+    background: linear-gradient(180deg, var(--black) 0%, var(--oil) 100%);
+}
+ /* Footer Styles */
+footer {
+    background: linear-gradient(-45deg, #1a1a1a, #2a2a2a);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: justify;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.footer-section h3 {
+    color:#cda45e ;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color:#cda45e ;
+}
 
 
-.backimage {
-    background: url("assets/Images/captainmiller.jpg");
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .logo {
+        font-size: 3rem;
+    }
+
+    .swiper-slide {
+        width: 300px;
+    }
 }
 
 
@@ -141,7 +252,201 @@ h5, p {
 
 
 
-/* RESERVATION PAGE Styles */
+/*//////////////////////////////*/
+ /* LOGIN-REGISTER PAGE Styles */
+/*/////////////////////////////*/
+
+:root {
+    --main-color: #cda45e;
+    --secondary-color: #0c0b09;
+    --tertiary-color: #1a1814;
+    --black-color: #000000;
+}
+
+#login-register {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.auth-container {
+    max-width: 450px;
+    width: 100%;
+    margin: auto;
+}
+
+.auth-card {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(205, 164, 94, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.auth-title {
+    color: var(--main-color);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+    color: #888;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-label {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    background-color: var(--tertiary-color);
+    border: 1px solid rgba(205, 164, 94, 0.2);
+    color: #fff;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+}
+
+.form-control:focus {
+    background-color: var(--tertiary-color);
+    border-color: var(--main-color);
+    box-shadow: none;
+    color: #fff;
+}
+
+.input-group-text {
+    background-color: transparent;
+    border: none;
+    color: #888;
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    color: #888;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: color 0.3s;
+}
+
+.password-toggle:hover {
+    color: #ccc;
+}
+
+.input-group {
+    position: relative;
+}
+
+.btn-primary {
+    background-color: var(--main-color);
+    border: none;
+    color: var(--secondary-color);
+    padding: 0.8rem;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: rgba(205, 164, 94, 0.9);
+}
+
+.auth-footer {
+    text-align: center;
+    color: #888;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.auth-footer a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.auth-footer a:hover {
+    color: rgba(205, 164, 94, 0.8);
+}
+
+.form-check-input:checked {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.form-check-label {
+    color: #888;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 576px) {
+    .auth-card {
+        padding: 1.5rem;
+    }
+}
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* MOVIES PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Now Showing Section */
+.now-showing {
+    /* Add your styles here */
+}
+
+/* Styles for Coming Soon Section */
+.coming-soon {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* RESERVATIONS PAGE Styles */
+/*//////////////////////*/
 
 /* General Styles */
 * {
@@ -152,36 +457,8 @@ h5, p {
 
 body {
   font-family: Cursive;
-  background: #c8c6c2;
   color: #333;
 }
-
-/*header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: linear-gradient(90deg, #cd8c38, #000);
-  padding: 20px 10px;
-  text-align: center;
-  color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}*/
-
-/*header .header-content {
-  max-width: 1200px;
-  margin: auto;
-}
-
-header h1 {
-  font-size: 2.5rem;
-  animation: fadeIn 2s ease-in-out;
-}
-
-header p {
-  font-size: 1.2rem;
-  margin-top: 5px;
-  animation: fadeIn 2.5s ease-in-out;
-}*/
 
 /* Theater List Grid */
 .theater-list {
@@ -252,15 +529,6 @@ header p {
     border-radius: 2rem;
     color: #1e1f26;
     transition: .3s
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #f4f4f4;
-  color: black;
-  font-size: 0.9rem;
 }
 
 /* Animations */
@@ -490,7 +758,6 @@ footer {
 /* Gallery Section Styling */
   .section-gallery {
     padding: 40px 20px;
-    background-color: #c8c6c2;
     text-align: center;
   }
   
@@ -503,27 +770,6 @@ footer {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-  }
-
-/* booking summary*/
-
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }*/
-  
-/*  body {
-    font-family: 'Arial', sans-serif;
-    background: #f9f9f9;
-    color: #333;
-  }*/
-  
-header {
-    background: linear-gradient(90deg, #cd8c38, #000);
-    padding: 20px;
-    text-align: center;
-    color: white;
   }
   
   h1 {
@@ -584,8 +830,6 @@ header {
   .confirm-btn:hover {
     background-color: #92601f;
   }
-  
-  
 
   /* Responsive Layout */
   @media (max-width: 768px) {
@@ -603,11 +847,6 @@ header {
     }
   }
   
-
-
-
-
-
   /* Styling for the Theater Info Section */
 .theater-info {
   background: #fff; /* White background */
@@ -676,66 +915,201 @@ header {
 
 
 
-/*Header part Start*/
-header{
-    position: fixed;
-    top:0; left: 0; right:0;
-    background: #fff;
-    padding:1rem 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-    box-shadow: var(--box-shadow);
-    color:#000;
-    height:50px;
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* REGISTER PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Registration Form */
+.register-form {
+    /* Add your styles here */
 }
 
-header .logo{
-    color:var(--black);
-    font-size: 2.5rem;
-    font-weight: bolder;
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* LOGIN PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Login Form */
+.login-form {
+    /* Add your styles here */
 }
 
-header .logo i{
-    color:var(--green);
+/* Styles for Forgot Password */
+.forgot-password {
+    /* Add your styles here */
 }
 
-header .navbar a{
-    font-size: 1.7rem;
-    border-radius: .5rem;
-    padding:.5rem 1.5rem;
-/*    color:var(--light-color);*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* PAYMENT PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Order Summary */
+.order-summary {
+    /* Add your styles here */
 }
 
-header .navbar a.active,
-header .navbar a:hover{
-    color:#fff;
-    background: var(--green);
+/* Styles for Payment Method */
+.payment-method {
+    /* Add your styles here */
 }
 
-/*header .icons i,
-header .icons a{
-    cursor: pointer;
-    margin-left: .5rem;
-    height:4.5rem;
-    line-height: 4.5rem;
-    width:4.5rem;
-    text-align: center;
-    font-size: 1.7rem;
-    color:var(--black);
-    border-radius: 50%;
-    background: #eee;
+/* Styles for Checkout Button */
+.checkout-button {
+    /* Add your styles here */
 }
 
-header .icons i:hover,
-header .icons a:hover{
-    color:#fff;
-    background: var(--green);
-    transform: rotate(360deg);
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* FEEDBACK PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Feedback Form */
+.feedback-form {
+    /* Add your styles here */
 }
 
-header .icons #menu-bars{
-    display: none;
-}*/
-/*Header part End*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* PROFILE PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Upload Photo Section */
+.upload-photo {
+    /* Add your styles here */
+}
+
+/* Styles for Booking History */
+.booking-history {
+    /* Add your styles here */
+}
+
+/* Styles for Edit Profile */
+.edit-profile {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* CONTACT US PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Location on Map */
+.location-map {
+    /* Add your styles here */
+}
+
+/* Styles for Contact Form */
+.contact-form {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* CHATBOT PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for Chat Messages */
+.chat-messages {
+    /* Add your styles here */
+}
+
+/* Styles for Send Message Button */
+.send-message {
+    /* Add your styles here */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////*/
+/* ERROR PAGE Styles */
+/*//////////////////////*/
+
+/* Styles for 404 Page */
+.error-404 {
+    /* Add your styles here */
+}
+
+/* Styles for 500 Error Page */
+.error-500 {
+    /* Add your styles here */
+}

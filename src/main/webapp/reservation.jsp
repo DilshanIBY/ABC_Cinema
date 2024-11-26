@@ -1,27 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theaters</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
-  
- 
-  <!--Google Fonts and Icons-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<% // BACKEND IMPORTS %>
+<% // Import Related Models & Controllers... %>
+
+<!-- Head Section -->
+<jsp:include page="temps/head.jsp" />
+
+<!-- Navigation -->
+<jsp:include page="temps/navbar.jsp" />
     
-    
-</head>
-<body>
+
+
+
+
+
+
 <!--<header>
 
     <a href="#" class="logo">ABC Cinema</a>
@@ -59,10 +52,6 @@
       <!-- Dynamic content inserted by JavaScript -->
     </section>
   </main>
-<!--  <footer>
-    <p>© 2024 Our Theaters Location. Designed by : Raheem Ihsaan .</p>
-  </footer>-->
-  
   <!--    This code is theater part end-->
   
   <!--    This code is seat part start-->
@@ -149,12 +138,11 @@
   </section>
   
   
-  
-  <section class="section-gallery" id="about"><!--
--->    <h2 class="name">Booking Summary</h2><!--
-    <div class="gallery-container">-->
+  <section class="section-gallery" id="about">
+    <h2 class="name">Booking Summary</h2>
       
-         <section class="movie-details">
+    <section class="movie-details">
+
       <h2>Movie Details</h2>
       <p><strong>Movie Title:</strong> The Great Adventure</p>
       <p><strong>Showtime:</strong> 7:30 PM</p>
@@ -176,20 +164,14 @@
     </section>
 
     <button class="confirm-btn">Confirm Booking</button>
-  </main>
-
-<!--  <footer>
-    <p>&copy; 2024 Liberty By Scope Cinemas. All Rights Reserved.</p>
-  </footer>-->
-        
-        
-    </div>
+    
   </section>
-  
-  
-  
-  <script src="assets/js/script.js"></script>
-  <!--    This code is seat part end-->
-</body>
-</html>
+    
 
+
+
+
+
+
+<!-- Footer -->
+<jsp:include page="temps/footer.jsp" />
