@@ -1023,24 +1023,309 @@ body {
 /*//////////////////////*/
 
 /* Styles for Upload Photo Section */
-.upload-photo {
-    /* Add your styles here */
-}
+body {
+            font-family: Arial, sans-serif;
+            color: #cda45e;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; 
+            position: relative;
+        }
 
-/* Styles for Booking History */
-.booking-history {
-    /* Add your styles here */
-}
+        /* Blurred background using a pseudo-element */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(images/wallpaperflare.com_wallpaper.jpg); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: blur(3px); 
+            z-index: -1; 
+        }
 
-/* Styles for Edit Profile */
-.edit-profile {
-    /* Add your styles here */
-}
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            width: 60%;
+            background: rgba(26, 24, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid #cda45e;
+            margin-right: 20px;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .avatar-container img:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        .upload-icon {
+            position: absolute;
+            background: #cda45e;
+            color: white;
+            border-radius: 50%;
+            padding: 4px 6px;
+            cursor: pointer;
+            margin-top: 100px;
+            margin-left: 90px;
+        }
+
+        .upload-icon:hover {
+            transform: scale(1.1);
+            background: #b09153;
+        }
+
+        .form-group-container {
+            flex-grow: 1;
+        }
+
+        .profile-data {
+            margin-bottom: 15px;
+            margin-left: 30px;
+        }
+
+        .profile-data span {
+            display: block;
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+
+        .profile-data span strong {
+            color: #cda45e;
+        }
+
+        .edit-profile-button {
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 30px;
+            padding: 10px 20px;
+            background: #cda45e;
+            color: #000;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.3s ease, background 0.3s ease;
+            text-align: center;
+        }
+
+        .edit-profile-button:hover {
+            background: #b09153;
+            transform: scale(1.1);
+        }
+
+        .history-container {
+            width: 60%;
+            padding: 20px;
+            background: rgba(26, 24, 20, 0.8);
+            border-radius: 10px;
+        }
+
+        .history-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: 80px 1fr 120px 100px 100px;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .history-grid .cell {
+            padding: 10px;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .history-grid .cell img {
+            width: 60px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .history-grid .status-booked {
+            color: #cda45e;
+            font-weight: bold;
+        }
+
+        .history-grid .status-cancelled {
+            color: #b09153;
+            font-weight: bold;
+        }
+
+        .history-grid .cell:nth-child(even) {
+            background: rgba(26, 24, 20, 0.6);
+        }
+
+        .history-grid .icon {
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #cda45e;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .history-grid .icon:hover {
+            transform: scale(1.1);
+            color: #b09153;
+        }
 
 
 
+/*//////////////////////*/
+/*USER DETAILS PAGE STYLES*/
+/*/////////////////////////*/
 
 
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('images/wallpaperflare.com_wallpaper.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Center content vertically */
+            position: relative;
+        }
+
+        /* Adding a clear foreground layer for content */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(images/wallpaperflare.com_wallpaper.jpg); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: blur(3px); 
+            z-index: -1; 
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #cda45e;
+        }
+
+        .form-container {
+            width: 60%;
+            background: rgba(26, 24, 20, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .form-group label {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: #cda45e;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #cda45e;
+            border-radius: 5px;
+            background: rgba(205, 164, 94, 0.2);
+            color: white;
+        }
+
+        .form-group input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.1em;
+            background: #cda45e;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            background: #b09153;
+        }
+ 
 
 
 
