@@ -385,10 +385,7 @@ document.addEventListener('DOMContentLoaded', function() {
 ////////////////////////////////////
 //////// CHATBOT PAGE Scripts ///////
 ////////////////////////////////////
-
-
-
-
+       
 
 
 
