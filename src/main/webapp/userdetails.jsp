@@ -30,7 +30,7 @@
 <body>
     <h1>User Details</h1>
     <div class="form-container">
-        <form action="saveprofile.jsp" method="POST">
+        <form>
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -50,8 +50,11 @@
                     <label><input type="radio" name="gender" value="female" required> Female</label>
                 </div>
             </div>
-            <button type="submit" class="submit-btn">Save Details</button>
-            <button type="clear" class="submit-btn">clear</button>
+            <div class="buttons-container">
+                <button type="submit" class="submit-btn">Save Details</button>
+                <button type="button" class="submit-btn">Clear</button>
+            </div>
+            
         </form>
     </div>
 </body>
