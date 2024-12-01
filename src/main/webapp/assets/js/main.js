@@ -356,7 +356,34 @@ document.addEventListener('DOMContentLoaded', function() {
 ////////////////////////////////////
 //////// PROFILE PAGE Scripts ///////
 ////////////////////////////////////
+function openPhotoViewer() {
+            const avatar = document.getElementById('avatar');
+            const fullImage = document.createElement('img');
+            fullImage.src = avatar.src;
+            fullImage.style.width = '720px';
+            fullImage.style.height = '720px';
+            fullImage.style.borderRadius = '10px';
 
+            const modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100vw';
+            modal.style.height = '100vh';
+            modal.style.background = 'rgba(0, 0, 0, 0.8)';
+            modal.style.display = 'flex';
+            modal.style.alignItems = 'center';
+            modal.style.justifyContent = 'center';
+            modal.style.zIndex = '1000';
+            modal.appendChild(fullImage);
+
+            modal.addEventListener('click', () => modal.remove());
+            document.body.appendChild(modal);
+        }
+        
+        function triggerPhotoUpload() {
+            document.getElementById('uploadPhoto').click();
+        }
 
 
 
