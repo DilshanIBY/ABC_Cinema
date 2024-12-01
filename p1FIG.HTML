@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - ABC CINEMA</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://your-image-url.com/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+    .sidebar h2 {
+      color: #ffcc00;
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.1rem;
+      padding: 10px 15px;
+      display: block;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .sidebar ul li a:hover,
+    .sidebar ul li a.active {
+      background: #ffcc00;
+      color: #000;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0.7); /* semi-transparent background */
+      border-radius: 10px;
+    }
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .section {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+    .section h3 {
+      font-size: 1.5rem;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+    .dashboard-stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+    .dashboard-stats .stat-card {
+      flex: 1;
+      padding: 20px;
+      background: #222;
+      border: 1px solid #ffcc00;
+      text-align: center;
+      border-radius: 8px;
+    }
+    .dashboard-stats .stat-card h4 {
+      font-size: 1.2rem;
+      color: #ffcc00;
+    }
+    .dashboard-stats .stat-card p {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    /* Buttons and Inputs */
+    button,
+    input,
+    select {
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      background: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ffd700;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>ABC CINEMA</h2>
+    <ul>
+      <li><a href="#" class="tab-link active" data-tab="dashboard">Dashboard</a></li>
+      <li><a href="#" class="tab-link" data-tab="movie-management">Movie Management</a></li>
+      <li><a href="#" class="tab-link" data-tab="user-management">User Management</a></li>
+      <li><a href="#" class="tab-link" data-tab="moderation">Content Moderation</a></li>
+      <li><a href="#" class="tab-link" data-tab="subscription">Subscription & Payments</a></li>
+      <li><a href="#" class="tab-link" data-tab="promotions">Promotional Tools</a></li>
+      <li><a href="#" class="tab-link" data-tab="reports">Reports & Analytics</a></li>
+      <li><a href="#" class="tab-link" data-tab="settings">Settings</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Dashboard -->
+    <div id="dashboard" class="tab-content active">
+      <div class="section">
+        <h3>Dashboard Overview</h3>
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <h4>Total Movies</h4>
+            <p>120</p>
+          </div>
+          <div class="stat-card">
+            <h4>Registered Users</h4>
+            <p>3,450</p>
+          </div>
+          <div class="stat-card">
+            <h4>Active Subscriptions</h4>
+            <p>1,250</p>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h3>Recent Activities</h3>
+        <p>Logs of user activities like recent reviews, ratings, and sign-ups.</p>
+      </div>
+    </div>
+
+    <!-- Movie Management -->
+    <div id="movie-management" class="tab-content">
+      <div class="section">
+        <h3>Manage Movies</h3>
+        <label for="movie-title">Movie Title</label>
+        <input type="text" id="movie-title" placeholder="Enter Movie Title">
+        <label for="genre">Genre</label>
+        <select id="genre">
+          <option>Action</option>
+          <option>Comedy</option>
+          <option>Drama</option>
+          <option>Horror</option>
+        </select>
+        <button>Add Movie</button>
+      </div>
+      <div class="section">
+        <h3>Categories/Genres</h3>
+        <button>Manage Genres</button>
+      </div>
+    </div>
+
+    <!-- User Management -->
+    <div id="user-management" class="tab-content">
+      <div class="section">
+        <h3>User Directory</h3>
+        <p>List of all users with their roles and activity status.</p>
+        <button>View User List</button>
+      </div>
+      <div class="section">
+        <h3>User Roles</h3>
+        <p>Assign roles like Admin, Moderator, etc.</p>
+        <button>Manage Roles</button>
+      </div>
+    </div>
+
+    <!-- Content Moderation -->
+    <div id="moderation" class="tab-content">
+      <div class="section">
+        <h3>Review Management</h3>
+        <p>Approve, edit, or delete user reviews.</p>
+        <button>Moderate Reviews</button>
+      </div>
+      <div class="section">
+        <h3>Comment Moderation</h3>
+        <p>Manage user comments and ensure safety.</p>
+        <button>Manage Comments</button>
+      </div>
+      <div class="section">
+        <h3>Rating Management</h3>
+        <p>Monitor and manage movie ratings.</p>
+        <button>Manage Ratings</button>
+      </div>
+    </div>
+
+    <!-- Subscription & Payments -->
+    <div id="subscription" class="tab-content">
+      <div class="section">
+        <h3>Subscription Plans</h3>
+        <p>Create and manage subscription tiers.</p>
+        <button>Create Subscription Plan</button>
+      </div>
+      <div class="section">
+        <h3>Payment Logs</h3>
+        <p>View transaction history and manage refunds.</p>
+        <button>View Payment History</button>
+      </div>
+      <div class="section">
+        <h3>User Subscriptions</h3>
+        <p>Track active, canceled, or expired subscriptions.</p>
+        <button>Manage Subscriptions</button>
+      </div>
+    </div>
+
+    <!-- Promotional Tools -->
+    <div id="promotions" class="tab-content">
+      <div class="section">
+        <h3>Banner Management</h3>
+        <button>Manage Banners</button>
+      </div>
+      <div class="section">
+        <h3>Email Campaigns</h3>
+        <button>Create Email Campaign</button>
+      </div>
+      <div class="section">
+        <h3>Discount Codes</h3>
+        <button>Manage Promo Codes</button>
+      </div>
+    </div>
+
+    <!-- Reports & Analytics -->
+    <div id="reports" class="tab-content">
+      <div class="section">
+        <h3>User Behavior</h3>
+        <p>Insights on user preferences and frequently watched genres.</p>
+        <button>View User Analytics</button>
+      </div>
+      <div class="section">
+        <h3>Movie Performance</h3>
+        <p>Data on movie views, ratings, and popularity.</p>
+        <button>View Movie Performance</button>
+      </div>
+      <div class="section">
+        <h3>Revenue Reports</h3>
+        <p>View total earnings and trends.</p>
+        <button>View Revenue Report</button>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div id="settings" class="tab-content">
+      <div class="section">
+        <h3>Site Settings</h3>
+        <button>Manage Site Settings</button>
+      </div>
+      <div class="section">
+        <h3>Admin Roles & Permissions</h3>
+        <button>Create/Modify Admin Roles</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for Tab Functionality
+    const tabs = document.querySelectorAll(".tab-link");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", e => {
+        e.preventDefault();
+
+        // Remove active class from all tabs and contents
+        tabs.forEach(t => t.classList.remove("active"));
+        contents.forEach(content => content.classList.remove("active"));
+
+        // Add active class to clicked tab and corresponding content
+        tab.classList.add("active");
+        const target = document.querySelector(`#${tab.dataset.tab}`);
+        target.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
