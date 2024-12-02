@@ -173,5 +173,9 @@
 
 
 
+<!-- Chat Bot -->
+<jsp:include page="temps/chatbot.jsp" />
+                
+                
 <!-- Footer -->
 <jsp:include page="temps/footer.jsp" />
