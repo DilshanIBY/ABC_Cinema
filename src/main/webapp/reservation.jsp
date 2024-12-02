@@ -54,7 +54,6 @@
   </main>
   <!--    This code is theater part end-->
   
-  
   <!--    This code is seat part start-->
    <section class="section-gallery" id="home">
     <h2>Seat Reservation</h2>
@@ -143,6 +142,7 @@
     <h2 class="name">Booking Summary</h2>
       
     <section class="movie-details">
+
       <h2>Movie Details</h2>
       <p><strong>Movie Title:</strong> The Great Adventure</p>
       <p><strong>Showtime:</strong> 7:30 PM</p>
@@ -173,5 +173,9 @@
 
 
 
+<!-- Chat Bot -->
+<jsp:include page="temps/chatbot.jsp" />
+                
+                
 <!-- Footer -->
 <jsp:include page="temps/footer.jsp" />
