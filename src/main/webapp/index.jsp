@@ -90,6 +90,7 @@
                                 </div>
                             </div>
                         </div>
+                                    
                     <%
                                 }
                             }
@@ -111,7 +112,10 @@
                 
                 
                 
-                
+    
+    
+<!-- Chat Bot -->
+<jsp:include page="temps/chatbot.jsp" />
                 
                 
 <!-- Footer -->
