@@ -220,6 +220,72 @@ footer {
 .footer-section a:hover {
     color:#cda45e ;
 }
+.section-title {
+    color: var(--gold);
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+        }
+
+        /* Testimonials Section Styles */
+#testimonials {
+    background-color: var(--black);
+    padding: 5rem 0;
+        }
+
+.testimonial-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+        }
+
+.testimonial-card img {
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+        }
+
+.testimonial-card p {
+    font-style: italic;
+    margin-bottom: 1rem;
+        }
+
+.testimonial-card h4 {
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+        }
+
+.testimonial-card p:last-child {
+    color: #bbb;
+        }
+
+ /* Gallery Section Styles */
+#gallery {
+    padding: 5rem 0;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 15px;
+    height: 250px;  /* Set a fixed height for consistency */
+}
+
+.gallery-item img {
+    width: 100%;  /* Ensure the image takes up the full width of the container */
+    height: 100%; /* Ensure the image takes up the full height of the container */
+    object-fit: cover; /* Maintain aspect ratio while filling the container */
+    transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
 
 
 /* Responsive Design */
