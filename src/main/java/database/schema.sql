@@ -102,6 +102,15 @@ CREATE TABLE NewsletterSubscriptions (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE clientdata (
+    clientid INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255),
+    email VARCHAR(255),
+    moviedate VARCHAR(255),
+    movietime VARCHAR(255),
+    seats  VARCHAR(MAX)
+)
+
 
 
 -- INSERT DUMMY DATA
