@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <style>
+    /* General Styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: url('abc-cinema.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    /* Error Page Container */
+    .error-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.7); /* Overlay effect */
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /* Marquee Styling */
+    .marquee {
+      background: linear-gradient(to bottom, #ffb600, #ff8000);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #ffae42;
+    }
+
+    .marquee h1 {
+      font-size: 8rem;
+      margin: 0;
+      font-weight: bold;
+      color: #000;
+      text-shadow: 2px 2px 5px #fff;
+    }
+
+    .marquee p {
+      font-size: 1.5rem;
+      margin: 20px 0;
+      color: #333;
+    }
+
+    /* Buttons */
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: #ff6f00;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 15px #ff8000;
+    }
+
+    .buttons a:hover {
+      transform: scale(1.1);
+      background-color: #ffb600;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <div class="error-content">
+      <div class="marquee">
+        <h1>404</h1>
+        <p>Oops! The page you're looking for doesn't exist.</p>
+      </div>
+      <div class="buttons">
+        <a href="/" class="home-btn">Go to Home</a>
+        <a href="/contact" class="contact-btn">Contact Support</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
