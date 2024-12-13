@@ -1,29 +1,15 @@
-<%--<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <% // BACKEND IMPORTS %>
 <% // Import Related Models & Controllers... %>
 
 <!-- Head Section -->
-<%--<jsp:include page="temps/head.jsp" />--%>
+<jsp:include page="temps/head.jsp" />
 
 <!-- Navigation -->
-<%--<jsp:include page="temps/navbar.jsp" />--%>
+<jsp:include page="temps/navbar.jsp" />
     
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Payment Gateway Form Design using HTML and CSS | Codehal</title>
-    <link rel="stylesheet" href="assets/css/paymentstyle.css">
-</head>
-
-<body>
-
-    <div class="container">
+    <div class="payment-container">
         <form action="">
             <div class="row">
                 <div class="column">
@@ -107,9 +93,6 @@
         </form>
     </div>
 
-</body>
-
-</html>
     
 
 
@@ -118,8 +101,8 @@
 
 
 <!-- Chat Bot -->
-<%--<jsp:include page="temps/chatbot.jsp" />--%>
+<jsp:include page="temps/chatbot.jsp" />
                 
                 
 <!-- Footer -->
-<%--<jsp:include page="temps/footer.jsp" />--%>
+<jsp:include page="temps/footer.jsp" />
