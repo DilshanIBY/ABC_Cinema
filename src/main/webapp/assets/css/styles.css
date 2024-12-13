@@ -72,19 +72,42 @@ header * {
 
 /* Navigation Styles */
 nav {
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid #37332a;
     padding: 1rem;
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(10px);
 }
+
+/* Initial nav styles */
+nav {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    /* Advanced border animation */
+    border-bottom: none;
+    background-image: 
+        linear-gradient(to right, #37332a, transparent),
+        linear-gradient(to left, #37332a, transparent);
+    background-size: 0% 1px, 0% 1px; /* Start from the middle */
+    background-repeat: no-repeat;
+    background-position: bottom center; /* Position at the bottom */
+    transition: background-size 0.1s linear; /* Smooth animation */
+}
+
 
 nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
     gap: 2rem;
+    padding-top: 14px;
 }
 
 nav a {
@@ -181,45 +204,6 @@ nav a:hover {
     padding: 2rem 0;
     background: linear-gradient(180deg, var(--black) 0%, var(--oil) 100%);
 }
- /* Footer Styles */
-footer {
-    background: var(--chocolate);
-    padding: 3rem 2rem;
-    text-align: justify;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-}
-
-.footer-section h3 {
-    color:#cda45e ;
-    margin-bottom: 1.5rem;
-    font-size: 1.3rem;
-
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section li {
-    margin-bottom: 0.8rem;
-}
-
-.footer-section a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-section a:hover {
-    color:#cda45e ;
-}
 
 
 /* Responsive Design */
@@ -243,6 +227,414 @@ footer {
     }
 }
 
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #1a1814;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #1a1814;
+  border-top-color: #cda45e;
+  border-bottom-color: #cda45e;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 30px;
+  bottom: 100px;
+  z-index: 996;
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.4s;
+  border: 2px solid #cda45e;
+}
+
+.back-to-top i {
+  font-size: 28px;
+  color: #cda45e;
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: #cda45e;
+  color: #1a1814;
+}
+
+.back-to-top:hover i {
+  color: #444444;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation Header
+--------------------------------------------------------------*/
+#Nav-header {
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 15px 0;
+}
+
+#Nav-header.header-scrolled {
+  top: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid #37332a;
+}
+
+#Nav-header .logo {
+  font-size: 28px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+}
+
+#Nav-header .logo a {
+  color: #fff;
+}
+
+#Nav-header .logo img {
+  max-height: 55px;
+}
+
+#Nav-header .logo h1 {
+    font-size: 24px;
+    padding-top: 11px;
+}
+
+/*--------------------------------------------------------------
+# 'Make-Reservation' Button
+--------------------------------------------------------------*/
+.make-reservation-btn {
+  margin: 0 0 0 15px;
+  border: 2px solid #cda45e;
+  color: #fff;
+  border-radius: 50px;
+  padding: 8px 25px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.make-reservation-btn:hover {
+  background: #cda45e;
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .make-reservation-btn {
+    margin: 0 15px 0 0;
+    padding: 8px 20px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Testimonials
+--------------------------------------------------------------*/
+.testimonials .testimonials-carousel,
+.testimonials .testimonials-slider {
+  overflow: hidden;
+}
+
+.testimonials .testimonial-item {
+  box-sizing: content-box;
+  min-height: 320px;
+}
+
+.testimonials .testimonial-item .testimonial-img {
+  width: 90px;
+  border-radius: 50%;
+  margin: -40px 0 0 40px;
+  position: relative;
+  z-index: 2;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+}
+
+.testimonials .testimonial-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0 5px 45px;
+  color: white;
+}
+
+.testimonials .testimonial-item h4 {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 0 45px;
+}
+
+.testimonials .testimonial-item .quote-icon-left,
+.testimonials .testimonial-item .quote-icon-right {
+  color: #d3af71;
+  font-size: 26px;
+}
+
+.testimonials .testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.testimonials .testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+}
+
+.testimonials .testimonial-item p {
+  font-style: italic;
+  margin: 0 15px 0 15px;
+  padding: 20px 20px 60px 20px;
+  background: #26231d;
+  position: relative;
+  border-radius: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonials .swiper-pagination {
+  margin-top: 30px;
+  position: relative;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #cda45e;
+}
+
+/*--------------------------------------------------------------
+# Gallery
+--------------------------------------------------------------*/
+.gallery .gallery-item {
+  overflow: hidden;
+  border-right: 3px solid #454035;
+  border-bottom: 3px solid #454035;
+}
+
+.gallery .gallery-item img {
+  transition: all ease-in-out 0.4s;
+}
+
+.gallery .gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  background: black;
+  padding: 0 0 30px 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+#footer .footer-top {
+  background: #0c0b09;
+  border-top: 1px solid #37332a;
+  border-bottom: 1px solid #28251f;
+  padding: 60px 0 30px 0;
+}
+
+#footer .footer-top .footer-info {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-info h3 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+}
+
+#footer .footer-top .footer-info p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: "Playfair Display", serif;
+  color: #fff;
+}
+
+#footer .footer-top .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #28251f;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#footer .footer-top .social-links a:hover {
+  background: #cda45e;
+  color: #fff;
+  text-decoration: none;
+}
+
+#footer .footer-top h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+#footer .footer-top .footer-links {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer .footer-top .footer-links ul i {
+  padding-right: 2px;
+  color: #cda45e;
+  font-size: 18px;
+  line-height: 1;
+}
+
+#footer .footer-top .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+#footer .footer-top .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+#footer .footer-top .footer-links ul a {
+  color: #fff;
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
+}
+
+#footer .footer-top .footer-links ul a:hover {
+  color: #cda45e;
+}
+
+#footer .footer-top .footer-newsletter form {
+  margin-top: 30px;
+  background: #28251f;
+  padding: 6px 10px;
+  position: relative;
+  border-radius: 50px;
+  border: 1px solid #454035;
+}
+
+#footer .footer-top .footer-newsletter form input[type=email] {
+  border: 0;
+  padding: 4px;
+  width: calc(100% - 110px);
+  background: #28251f;
+  color: white;
+}
+
+#footer .footer-top .footer-newsletter form input[type=submit] {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 20px 2px 20px;
+  background: #cda45e;
+  color: #fff;
+  transition: 0.3s;
+  border-radius: 50px;
+}
+
+#footer .footer-top .footer-newsletter form input[type=submit]:hover {
+  background: #d3af71;
+}
+
+#footer .copyright {
+  text-align: center;
+  padding-top: 30px;
+}
+
+#footer .credits {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #fff;
+}
+
+#footer a {
+  color: var(--gold);
+}
 
 
 
@@ -254,13 +646,6 @@ footer {
 /*//////////////////////////////*/
  /* LOGIN-REGISTER PAGE Styles */
 /*/////////////////////////////*/
-
-:root {
-    --main-color: #cda45e;
-    --secondary-color: #0c0b09;
-    --tertiary-color: #1a1814;
-    --black-color: #000000;
-}
 
 #login-register {
     background-size: cover;
@@ -290,7 +675,7 @@ footer {
 }
 
 .auth-title {
-    color: var(--main-color);
+    color: var(--gold);
     font-weight: bold;
     text-align: center;
     margin-bottom: 0.5rem;
@@ -309,15 +694,15 @@ footer {
 }
 
 .form-control {
-    background-color: var(--tertiary-color);
+    background-color: var(--oil);
     border: 1px solid rgba(205, 164, 94, 0.2);
     color: #fff;
     padding: 0.8rem 1rem 0.8rem 2.5rem;
 }
 
 .form-control:focus {
-    background-color: var(--tertiary-color);
-    border-color: var(--main-color);
+    background-color: var(--oil);
+    border-color: var(--gold);
     box-shadow: none;
     color: #fff;
 }
@@ -356,9 +741,9 @@ footer {
 }
 
 .btn-primary {
-    background-color: var(--main-color);
+    background-color: var(--gold);
     border: none;
-    color: var(--secondary-color);
+    color: var(--chocolate);
     padding: 0.8rem;
     font-weight: 500;
     width: 100%;
@@ -378,7 +763,7 @@ footer {
 }
 
 .auth-footer a {
-    color: var(--main-color);
+    color: var(--gold);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
@@ -389,8 +774,8 @@ footer {
 }
 
 .form-check-input:checked {
-    background-color: var(--main-color);
-    border-color: var(--main-color);
+    background-color: var(--gold);
+    border-color: var(--gold);
 }
 
 .form-check-label {
@@ -448,14 +833,14 @@ footer {
 /*//////////////////////*/
 
 /* General Styles */
-* {
+.reservation-container * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 /* Theater List Grid */
-.theater-list {
+.reservation-container .theater-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
@@ -464,7 +849,35 @@ footer {
   margin: auto;
 }
 
-.theater-card {
+
+.reservation-container .head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.reservation-container .title {
+    font-size: 16px;
+    font-weight: 600;
+    color:#cd8c38;
+}
+  
+.reservation-container h1 {
+    font-size: 2.5rem;
+}
+
+.reservation-container h2 {
+  color: #cd8c38;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.reservation-container section {
+    margin-bottom: 20px;
+}
+
+.reservation-container .theater-card {
   background: white;
   border-radius: 15px;
   overflow: hidden;
@@ -472,39 +885,39 @@ footer {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.theater-card:hover {
+.reservation-container .theater-card:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px #cd8c38;
 }
 
-.theater-card img {
+.reservation-container .theater-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.theater-card:hover img {
+.reservation-container .theater-card:hover img {
   transform: scale(1.1);
 }
 
-.theater-card-content {
+.reservation-container .theater-card-content {
   padding: 20px;
   text-align: center;
 }
 
-.theater-card h3 {
+.reservation-container .theater-card h3 {
   font-size: 1.5rem;
   color: #cd8c38;
 }
 
-.theater-card p {
+.reservation-container .theater-card p {
   font-size: 0.9rem;
   margin: 10px 0;
   color: #555;
 }
 
-.theater-card a {
+.reservation-container .theater-card a {
   display: inline-block;
   margin-top: 15px;
   text-decoration: none;
@@ -515,7 +928,7 @@ footer {
   transition: background 0.3s ease;
 }
 
-.theater-card a:hover {
+.reservation-container .theater-card a:hover {
   
   display: inline-block;
     padding: .5rem 1rem;
@@ -538,7 +951,7 @@ footer {
 }
 
 /*Seat design*/
-/*.center {
+/*.reservation-container .center {
     width: 100%;
     height: 100%;
     display: flex;
@@ -547,7 +960,7 @@ footer {
     background-color: #c8c6c2;
 
   }*/
-  .tickets {
+  .reservation-container .tickets {
     width: 550px;
     height: fit-content;
     border: 0.4mm solid rgba(0, 0, 0, 0.08);
@@ -561,12 +974,12 @@ footer {
     box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
 
-  .tickets:hover {
+  .reservation-container .tickets:hover {
     transform: scale(1.05);
     box-shadow: 0 15px 20px #cd8c38;
   }
 
-  .ticket-selector {
+  .reservation-container .ticket-selector {
     background: linear-gradient(45deg, rgba(255, 255, 255, .05), rgba(205, 140, 56, .15));
     display: flex;
     align-items: center;
@@ -575,21 +988,7 @@ footer {
     box-sizing: border-box;
     padding: 20px;
   }
-
-
-  .head {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-  }
-  .title {
-    font-size: 16px;
-    font-weight: 600;
-    color:#cd8c38;
-  }
-  .seats {
+  .reservation-container .seats {
     width: 100%;
     display: flex;
     align-items: center;
@@ -598,13 +997,13 @@ footer {
     min-height: 150px;
     position: relative;
   }
-  .status {
+  .reservation-container .status {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
   }
-  .seats::before {
+  .reservation-container .seats::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -616,11 +1015,11 @@ footer {
     border-radius: 0 0 3mm 3mm;
     border-top: 0.3mm solid rgb(180, 180, 180);
   }
-  .item {
+  .reservation-container .item {
     font-size: 12px;
     position: relative;
   }
-  .item::before {
+  .reservation-container .item::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -632,15 +1031,15 @@ footer {
     outline: 0.2mm solid rgb(120, 120, 120);
     border-radius: 0.3mm;
   }
-  .item:nth-child(2)::before {
+  .reservation-container .item:nth-child(2)::before {
     background: rgb(180, 180, 180);
     outline: none;
   }
-  .item:nth-child(3)::before {
+  .reservation-container .item:nth-child(3)::before {
     background:#cd8c38;
     outline: none;
   }
-  .all-seats {
+  .reservation-container .all-seats {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-gap: 15px;
@@ -648,7 +1047,7 @@ footer {
     margin-top: 20px;
     position: relative;
   }
-  .seat {
+  .reservation-container .seat {
     width: 20px;
     height: 20px;
     background: white;
@@ -656,18 +1055,18 @@ footer {
     outline: 0.3mm solid rgb(180, 180, 180);
     cursor: pointer;
   }
-  .all-seats input:checked + label {
+  .reservation-container .all-seats input:checked + label {
     background:#cd8c38;
     outline: none;
   }
-  .seat.booked {
+  .reservation-container .seat.booked {
     background: rgb(180, 180, 180);
     outline: none;
   }
-  input {
+  .reservation-container input {
     display: none;
   }
-  .timings {
+  .reservation-container .timings {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -675,13 +1074,13 @@ footer {
     justify-content: center;
     margin-top: 30px;
   }
-  .dates {
+  .reservation-container .dates {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  .dates-item {
+  .reservation-container .dates-item {
     width: 50px;
     height: 40px;
     background: rgb(233, 233, 233);
@@ -694,17 +1093,17 @@ footer {
     border-radius: 2mm;
     cursor: pointer;
   }
-  .day {
+  .reservation-container .day {
     font-size: 12px;
   }
-  .times {
+  .reservation-container .times {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
   }
-  .time {
+  .reservation-container .time {
     font-size: 14px;
     width: fit-content;
     padding: 7px 14px;
@@ -712,11 +1111,11 @@ footer {
     border-radius: 2mm;
     cursor: pointer;
   }
-  .timings input:checked + label {
+  .reservation-container .timings input:checked + label {
     background:#cd8c38;
     color: white;
   }
-  .price {
+  .reservation-container .price {
     width: 100%;
     box-sizing: border-box;
     padding: 10px 20px;
@@ -724,7 +1123,7 @@ footer {
     align-items: center;
     justify-content: space-between;
   }
-  .total {
+  .reservation-container .total {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -732,11 +1131,11 @@ footer {
     font-size: 16px;
     font-weight: 500;
   }
-  .total span {
+  .reservation-container .total span {
     font-size: 11px;
     font-weight: 400;
   }
-  .price button {
+  .reservation-container .price button {
     background: #cd8c38;
     color: white;
     font-family: poppins;
@@ -749,32 +1148,28 @@ footer {
   }
 
 /* Gallery Section Styling */
-.section-gallery {
+.reservation-container .section-gallery {
   padding: 40px 20px;
   text-align: center;
 }
 
-.section-gallery h2 {
+.reservation-container .section-gallery h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
 
-.gallery-container {
+.reservation-container .gallery-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-h1 {
-  font-size: 2.5rem;
-}
-
-p {
+.reservation-container .reservation-container p {
   font-size: 1.2rem;
   margin-top: 5px;
 }
 
-.summary-container {
+.reservation-container .summary-container {
   max-width: 1200px;
   margin: 30px auto;
   padding: 20px;
@@ -783,27 +1178,16 @@ p {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
-h2 {
-  color: #cd8c38;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-section {
-  margin-bottom: 20px;
-}
-
-ul {
+.reservation-container ul {
   list-style-type: none;
 }
 
-ul li {
+.reservation-container ul li {
   font-size: 1rem;
   margin: 10px 0;
 }
 
-.confirm-btn {
+.reservation-container .confirm-btn {
   display: block;
   width: 200px;
   margin: 30px auto;
@@ -820,14 +1204,14 @@ ul li {
   transition: .3s;
 }
 
-.confirm-btn:hover {
+.reservation-container .confirm-btn:hover {
   background-color: #92601f;
 }
 
 
   
   /* Styling for the Theater Info Section */
-.theater-info {
+.reservation-container .theater-info {
   background: #fff; /* White background */
   border: 1px solid #ddd; /* Light gray border */
   border-radius: 8px; /* Rounded corners */
@@ -836,12 +1220,12 @@ ul li {
   margin-bottom: 20px; /* Space between boxes */
 /*  align-items: center;*/
 }
-.theater-info:hover {
+.reservation-container .theater-info:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px #cd8c38;
 }
 
-.movie-details {
+.reservation-container .movie-details {
   background: #fff; /* White background */
   border: 1px solid #ddd; /* Light gray border */
   border-radius: 8px; /* Rounded corners */
@@ -854,13 +1238,13 @@ ul li {
   
 }
 
-.movie-details:hover {
+.reservation-container .movie-details:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px #cd8c38;
   
 }
 
-.pricing {
+.reservation-container .pricing {
   background: #fff; /* White background */
   border: 1px solid #ddd; /* Light gray border */
   border-radius: 8px; /* Rounded corners */
@@ -871,11 +1255,11 @@ ul li {
   margin: 0 auto;
 }
 
-.pricing:hover {
+.reservation-container .pricing:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px #cd8c38;
 }
-.payment-info{
+.reservation-container .payment-info{
   background: #fff; /* White background */
   border: 1px solid #ddd; /* Light gray border */
   border-radius: 8px; /* Rounded corners */
@@ -886,59 +1270,10 @@ ul li {
   margin: 0 auto;
 }
 
-.payment-info:hover {
+.reservation-container .payment-info:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px #cd8c38;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*//////////////////////*/
-/* REGISTER PAGE Styles */
-/*//////////////////////*/
-
-/* Styles for Registration Form */
-.register-form {
-    /* Add your styles here */
-}
-
-
-
-
-
-
-
-
-
-
-/*//////////////////////*/
-/* LOGIN PAGE Styles */
-/*//////////////////////*/
-
-/* Styles for Login Form */
-.login-form {
-    /* Add your styles here */
-}
-
-/* Styles for Forgot Password */
-.forgot-password {
-    /* Add your styles here */
-}
-
-
-
-
-
 
 
 
@@ -951,21 +1286,87 @@ ul li {
 /* PAYMENT PAGE Styles */
 /*//////////////////////*/
 
-
-
-/* Styles for Order Summary */
-.order-summary {
-    /* Add your styles here */
+.payment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1f242d;
+    padding: 25px;
 }
 
-/* Styles for Payment Method */
-.payment-method {
-    /* Add your styles here */
+.payment-container form {
+    width: 700px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 10px;
 }
 
-/* Styles for Checkout Button */
-.checkout-button {
-    /* Add your styles here */
+.payment-container form .row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.payment-container .row .column {
+    flex: 1 1 250px;
+}
+
+.payment-container .column .title {
+    font-size: 20px;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.payment-container .column .input-box {
+    margin: 15px 0;
+}
+
+.payment-container .input-box span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.payment-container .input-box input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.payment-container .column .flex {
+    display: flex;
+    gap: 15px;
+}
+
+.payment-container .flex .input-box {
+    margin-top: 5px;
+}
+
+.payment-container .input-box img {
+    height: 34px;
+    margin-top: 5px;
+    filter: drop-shadow(0 0 1px #000);
+}
+
+.payment-container form .btn {
+    width: 100%;
+    padding: 12px;
+    background: #8175d3;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    font-size: 17px;
+    color: #fff;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.payment-container form .btn:hover {
+    background: #6a5acd;
 }
 
 
@@ -1360,7 +1761,7 @@ form {
     flex-direction: column;
 }
 
-input, textarea {
+.contact-container input, textarea {
     background: var(--oil);
     color: #fff;
     border: none;
@@ -1483,12 +1884,6 @@ button:hover {
 /*//////////////////////*/
 /* CHATBOT PAGE Styles */
 /*//////////////////////*/
-:root {
-    --gold: #cda45e;
-    --chocolate: #0c0b09;
-    --oil: #1a1814;
-    --black: #000000;
-}
 
 .chat-bubble {
     position: fixed;
@@ -1688,12 +2083,58 @@ button:hover {
 /* ERROR PAGE Styles */
 /*//////////////////////*/
 
-/* Styles for 404 Page */
-.error-404 {
-    /* Add your styles here */
+.error-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7); /* Overlay effect */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* Styles for 500 Error Page */
-.error-500 {
-    /* Add your styles here */
+.error-page .marquee {
+  background: linear-gradient(to bottom, #ffb600, #ff8000);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #ffae42;
+}
+
+.error-page .marquee h1 {
+  font-size: 8rem;
+  margin: 0;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 2px 2px 5px #fff;
+}
+
+.error-page .marquee p {
+  font-size: 1.5rem;
+  margin: 20px 0;
+  color: #333;
+}
+
+.error-page .buttons {
+  margin-top: 20px;
+}
+
+.error-page .buttons a {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #ff6f00;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 15px #ff8000;
+}
+
+.error-page .buttons a:hover {
+  transform: scale(1.1);
+  background-color: #ffb600;
 }

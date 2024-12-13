@@ -124,92 +124,92 @@ $(document).ready(function () {
 /// ADMIN DASHBOARD Movies Scripts ///
 ////////////////////////////////////
 document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('add-movie-modal');
-            const form = document.getElementById('add-movie-form');
-            const addMovieCards = document.querySelectorAll('.add-movie-card');
-            const closeBtn = modal.querySelector('.close-btn');
-            let currentGallery = null;
-            let isEditing = false;
-            let editingCard = null;
+    const modal = document.getElementById('add-movie-modal');
+    const form = document.getElementById('add-movie-form');
+    const addMovieCards = document.querySelectorAll('.add-movie-card');
+    const closeBtn = modal.querySelector('.close-btn');
+    let currentGallery = null;
+    let isEditing = false;
+    let editingCard = null;
 
-            addMovieCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    currentGallery = card.parentNode;
-                    const releaseDateInput = form.querySelector('#release-date');
-                    releaseDateInput.style.display = card.dataset.modal === 'coming-soon' ? 'block' : 'none';
-                    modal.style.display = 'flex';
-                });
-            });
+    addMovieCards.forEach(card => {
+        card.addEventListener('click', () => {
+            currentGallery = card.parentNode;
+            const releaseDateInput = form.querySelector('#release-date');
+            releaseDateInput.style.display = card.dataset.modal === 'coming-soon' ? 'block' : 'none';
+            modal.style.display = 'flex';
+        });
+    });
 
-            closeBtn.addEventListener('click', () => {
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        form.reset();
+        isEditing = false;
+        editingCard = null;
+    });
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = form['movie-name'].value;
+        const language = form['language'].value;
+        const genre = form['genre'].value;
+        const releaseDate = form['release-date']?.value;
+        const imageFile = form['movie-image'].files[0];
+
+        if (!imageFile) {
+            alert('Please select an image.');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            if (isEditing && editingCard) {
+                editingCard.style.backgroundImage = `url('${event.target.result}')`;
+                const details = editingCard.querySelector('.details');
+                details.innerHTML = `<strong>${name}</strong><br>${language}<br>${genre}${releaseDate ? `<br>${releaseDate}` : ''}`;
                 modal.style.display = 'none';
                 form.reset();
                 isEditing = false;
                 editingCard = null;
+                return;
+            }
+
+            const newMovieCard = document.createElement('div');
+            newMovieCard.classList.add('movie-card');
+            newMovieCard.style.backgroundImage = `url('${event.target.result}')`;
+
+            const details = document.createElement('div');
+            details.classList.add('details');
+            details.innerHTML = `<strong>${name}</strong><br>${language}<br>${genre}${releaseDate ? `<br>${releaseDate}` : ''}`;
+
+            const actions = document.createElement('div');
+            actions.classList.add('actions');
+            actions.innerHTML = `<i class="fa-solid fa-pen-to-square" data-action="edit"></i><i class="fa-solid fa-trash" data-action="delete"></i>`;
+
+            actions.querySelector('[data-action="edit"]').addEventListener('click', () => {
+                isEditing = true;
+                editingCard = newMovieCard;
+                form['movie-name'].value = name;
+                form['language'].value = language;
+                form['genre'].value = genre;
+                form['release-date'].value = releaseDate || '';
+                modal.style.display = 'flex';
             });
 
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = form['movie-name'].value;
-                const language = form['language'].value;
-                const genre = form['genre'].value;
-                const releaseDate = form['release-date']?.value;
-                const imageFile = form['movie-image'].files[0];
-
-                if (!imageFile) {
-                    alert('Please select an image.');
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                    if (isEditing && editingCard) {
-                        editingCard.style.backgroundImage = `url('${event.target.result}')`;
-                        const details = editingCard.querySelector('.details');
-                        details.innerHTML = `<strong>${name}</strong><br>${language}<br>${genre}${releaseDate ? `<br>${releaseDate}` : ''}`;
-                        modal.style.display = 'none';
-                        form.reset();
-                        isEditing = false;
-                        editingCard = null;
-                        return;
-                    }
-
-                    const newMovieCard = document.createElement('div');
-                    newMovieCard.classList.add('movie-card');
-                    newMovieCard.style.backgroundImage = `url('${event.target.result}')`;
-
-                    const details = document.createElement('div');
-                    details.classList.add('details');
-                    details.innerHTML = `<strong>${name}</strong><br>${language}<br>${genre}${releaseDate ? `<br>${releaseDate}` : ''}`;
-
-                    const actions = document.createElement('div');
-                    actions.classList.add('actions');
-                    actions.innerHTML = `<i class="fa-solid fa-pen-to-square" data-action="edit"></i><i class="fa-solid fa-trash" data-action="delete"></i>`;
-
-                    actions.querySelector('[data-action="edit"]').addEventListener('click', () => {
-                        isEditing = true;
-                        editingCard = newMovieCard;
-                        form['movie-name'].value = name;
-                        form['language'].value = language;
-                        form['genre'].value = genre;
-                        form['release-date'].value = releaseDate || '';
-                        modal.style.display = 'flex';
-                    });
-
-                    actions.querySelector('[data-action="delete"]').addEventListener('click', () => {
-                        newMovieCard.remove();
-                    });
-
-                    newMovieCard.appendChild(details);
-                    newMovieCard.appendChild(actions);
-                    currentGallery.insertBefore(newMovieCard, currentGallery.querySelector('.add-movie-card'));
-
-                    modal.style.display = 'none';
-                    form.reset();
-                };
-                reader.readAsDataURL(imageFile);
+            actions.querySelector('[data-action="delete"]').addEventListener('click', () => {
+                newMovieCard.remove();
             });
-        });
+
+            newMovieCard.appendChild(details);
+            newMovieCard.appendChild(actions);
+            currentGallery.insertBefore(newMovieCard, currentGallery.querySelector('.add-movie-card'));
+
+            modal.style.display = 'none';
+            form.reset();
+        };
+        reader.readAsDataURL(imageFile);
+    });
+});
 
 
 
@@ -244,124 +244,125 @@ document.addEventListener('DOMContentLoaded', () => {
 ////////////////////////////////////
 /// ADMIN DASHBOARD Users Scripts ///
 ////////////////////////////////////
- // Add New User Form Toggle
-    const addUserButton = document.querySelector('.add-user-btn');
-    const addUserForm = document.querySelector('.add-user-form');
-    const addUserSubmit = document.querySelector('#addUserSubmit');
-    const clearForm = document.querySelector('#clearForm');
-    const userTableBody = document.querySelector('#userTableBody');
 
-    let isEditMode = false; // Track if in Edit Mode
-    let editingRow = null; // Track which row is being edited
+// Add New User Form Toggle
+const addUserButton = document.querySelector('.add-user-btn');
+const addUserForm = document.querySelector('.add-user-form');
+const addUserSubmit = document.querySelector('#addUserSubmit');
+const clearForm = document.querySelector('#clearForm');
+const userTableBody = document.querySelector('#userTableBody');
 
-    addUserButton.addEventListener('click', () => {
-        addUserForm.style.display = addUserForm.style.display === 'block' ? 'none' : 'block';
-        clearForm.click(); // Clear the form on toggle
-        isEditMode = false; // Reset edit mode
-        addUserSubmit.textContent = 'Add User'; // Reset button text
-    });
+let isEditMode = false; // Track if in Edit Mode
+let editingRow = null; // Track which row is being edited
 
-    // Clear Form
-    clearForm.addEventListener('click', () => {
-        document.getElementById('userId').value = '';
-        document.getElementById('userName').value = '';
-        document.getElementById('userEmail').value = '';
-        document.getElementById('userPhoto').value = '';
-    });
+addUserButton.addEventListener('click', () => {
+    addUserForm.style.display = addUserForm.style.display === 'block' ? 'none' : 'block';
+    clearForm.click(); // Clear the form on toggle
+    isEditMode = false; // Reset edit mode
+    addUserSubmit.textContent = 'Add User'; // Reset button text
+});
 
-    // Add or Save User Functionality
-    addUserSubmit.addEventListener('click', () => {
-        const userId = document.getElementById('userId').value;
-        const userName = document.getElementById('userName').value;
-        const userEmail = document.getElementById('userEmail').value;
-        const userPhoto = document.getElementById('userPhoto').files[0];
+// Clear Form
+clearForm.addEventListener('click', () => {
+    document.getElementById('userId').value = '';
+    document.getElementById('userName').value = '';
+    document.getElementById('userEmail').value = '';
+    document.getElementById('userPhoto').value = '';
+});
 
-        if (userId && userName && userEmail) {
-            const reader = new FileReader();
-            reader.onload = function () {
-                if (isEditMode && editingRow) {
-                    // Update existing row
-                    const profilePic = editingRow.querySelector('.profile-pic');
-                    if (userPhoto) {
-                        profilePic.src = reader.result;
-                    }
-                    editingRow.children[0].textContent = userId;
-                    editingRow.children[1].innerHTML = `<img src="${profilePic.src}" alt="Profile Pic" class="profile-pic"> ${userName}`;
-                    editingRow.children[2].textContent = userEmail;
+// Add or Save User Functionality
+addUserSubmit.addEventListener('click', () => {
+    const userId = document.getElementById('userId').value;
+    const userName = document.getElementById('userName').value;
+    const userEmail = document.getElementById('userEmail').value;
+    const userPhoto = document.getElementById('userPhoto').files[0];
 
-                    // Reset state
-                    editingRow = null;
-                    isEditMode = false;
-                    addUserSubmit.textContent = 'Add User';
-                } else {
-                    // Add new row
-                    const newRow = document.createElement('tr');
-                    newRow.innerHTML = `
-                        <td>${userId}</td>
-                        <td><img src="${reader.result}" alt="Profile Pic" class="profile-pic"> ${userName}</td>
-                        <td>${userEmail}</td>
-                        <td>N/A</td>
-                        <td>
-                            <button class="edit-btn"><i class="fa-solid fa-user-pen"></i></button>
-                            <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    `;
-
-                    // Add Delete Functionality
-                    newRow.querySelector('.delete-btn').addEventListener('click', function () {
-                        this.parentElement.parentElement.remove();
-                    });
-
-                    // Add Edit Functionality
-                    newRow.querySelector('.edit-btn').addEventListener('click', function () {
-                        editUser(newRow);
-                    });
-
-                    userTableBody.appendChild(newRow);
+    if (userId && userName && userEmail) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            if (isEditMode && editingRow) {
+                // Update existing row
+                const profilePic = editingRow.querySelector('.profile-pic');
+                if (userPhoto) {
+                    profilePic.src = reader.result;
                 }
+                editingRow.children[0].textContent = userId;
+                editingRow.children[1].innerHTML = `<img src="${profilePic.src}" alt="Profile Pic" class="profile-pic"> ${userName}`;
+                editingRow.children[2].textContent = userEmail;
 
-                addUserForm.style.display = 'none'; // Hide the form
-                clearForm.click(); // Clear the form
-            };
+                // Reset state
+                editingRow = null;
+                isEditMode = false;
+                addUserSubmit.textContent = 'Add User';
+            } else {
+                // Add new row
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${userId}</td>
+                    <td><img src="${reader.result}" alt="Profile Pic" class="profile-pic"> ${userName}</td>
+                    <td>${userEmail}</td>
+                    <td>N/A</td>
+                    <td>
+                        <button class="edit-btn"><i class="fa-solid fa-user-pen"></i></button>
+                        <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
 
-            if (userPhoto) {
-                reader.readAsDataURL(userPhoto);
-            } else if (isEditMode && editingRow) {
-                reader.onload(); // Update without changing the photo
+                // Add Delete Functionality
+                newRow.querySelector('.delete-btn').addEventListener('click', function () {
+                    this.parentElement.parentElement.remove();
+                });
+
+                // Add Edit Functionality
+                newRow.querySelector('.edit-btn').addEventListener('click', function () {
+                    editUser(newRow);
+                });
+
+                userTableBody.appendChild(newRow);
             }
-        } else {
-            alert('Please fill in all fields');
+
+            addUserForm.style.display = 'none'; // Hide the form
+            clearForm.click(); // Clear the form
+        };
+
+        if (userPhoto) {
+            reader.readAsDataURL(userPhoto);
+        } else if (isEditMode && editingRow) {
+            reader.onload(); // Update without changing the photo
         }
-    });
-
-    // Function to Handle Edit Button Click
-    function editUser(row) {
-        editingRow = row; // Set the row being edited
-        isEditMode = true; // Enable edit mode
-        addUserSubmit.textContent = 'Save Changes'; // Update button text
-
-        // Pre-fill form with row data
-        document.getElementById('userId').value = row.children[0].textContent;
-        document.getElementById('userName').value = row.children[1].textContent.trim();
-        document.getElementById('userEmail').value = row.children[2].textContent;
-
-        // Show form
-        addUserForm.style.display = 'block';
+    } else {
+        alert('Please fill in all fields');
     }
+});
 
-    // Add Delete Functionality to Existing Rows
-    document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            this.parentElement.parentElement.remove();
-        });
-    });
+// Function to Handle Edit Button Click
+function editUser(row) {
+    editingRow = row; // Set the row being edited
+    isEditMode = true; // Enable edit mode
+    addUserSubmit.textContent = 'Save Changes'; // Update button text
 
-    // Add Edit Functionality to Existing Rows
-    document.querySelectorAll('.edit-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            editUser(this.parentElement.parentElement);
-        });
+    // Pre-fill form with row data
+    document.getElementById('userId').value = row.children[0].textContent;
+    document.getElementById('userName').value = row.children[1].textContent.trim();
+    document.getElementById('userEmail').value = row.children[2].textContent;
+
+    // Show form
+    addUserForm.style.display = 'block';
+}
+
+// Add Delete Functionality to Existing Rows
+document.querySelectorAll('.delete-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        this.parentElement.parentElement.remove();
     });
+});
+
+// Add Edit Functionality to Existing Rows
+document.querySelectorAll('.edit-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        editUser(this.parentElement.parentElement);
+    });
+});
 
 
 
