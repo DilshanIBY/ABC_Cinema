@@ -1,8 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="controllers.UserController" %>
+<%@ page import="models.User" %>
+<%@ page import="java.util.List" %>
 
-<% // BACKEND IMPORTS %>
-<% // Import Related Models & Controllers... %>
+<%
+    
+    UserController userController = new UserController();
+    String message = null;
 
+    try {
+        
+        if (request.getParameter("loginSubmit") != null) {
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+
+            
+            List<User> users = userController.getAllUsers();
+            User loggedInUser = users.stream()
+                .filter(u -> u.getEmail().equals(email) && u.getPassword().equals(password))
+                .findFirst().orElse(null);
+
+            if (loggedInUser != null) {
+                session.setAttribute("user", loggedInUser);
+                response.sendRedirect("movies.jsp"); 
+                return; 
+            } else {
+                message = "Invalid email or password.";
+            }
+        }
+
+        
+        if (request.getParameter("registerSubmit") != null) {
+            String fullName = request.getParameter("fullName");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+
+            User newUser = new User();
+            newUser.setFullName(fullName);
+            newUser.setEmail(email);
+            newUser.setPassword(password);
+            newUser.setStatus("active");
+
+            if (userController.createUser(newUser)) {
+                message = "Account created successfully. Please log in.";
+            } else {
+                message = "Error creating account. Please try again.";
+            }
+        }
+    } catch (Exception e) {
+        message = "An error occurred: " + e.getMessage();
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,12 +76,14 @@
     
     <div class="auth-container">
         <div class="auth-card">
-           
+             <% if (message != null) { %>
+                <div class="alert alert-info"><%= message %></div>
+            <% } %>
             <!-- Login Form -->
             <div id="loginForm">
                 <h2 class="auth-title">Welcome Back</h2>
                 <p class="auth-subtitle">Sign in to continue</p>
-                <form>
+                <form method="post" action="<%= request.getRequestURI() %>">
                     <div class="mb-3">
                         <label class="form-label">Email Address</label>
                         <div class="input-group">
@@ -74,7 +124,7 @@
             <div id="registerForm" style="display: none;">
                 <h2 class="auth-title">Create Account</h2>
                 <p class="auth-subtitle">Register a new account</p>
-                <form>
+                <form method="post" action="<%= request.getRequestURI() %>">
                     <div class="mb-3">
                         <label class="form-label">Full Name</label>
                         <div class="input-group">
@@ -114,7 +164,15 @@
             </div>
         </div>
     </div>
-    
+        <script>
+        function toggleForms() {
+            const loginForm = document.getElementById("loginForm");
+            const registerForm = document.getElementById("registerForm");
+            loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+            registerForm.style.display = registerForm.style.display === "none" ? "block" : "none";
+        }
+    </script>
+
 
 
 

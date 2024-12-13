@@ -13,7 +13,7 @@
 
 
 
-
+        <div class="reservation-container">
 
 <!--<header>
 
@@ -167,6 +167,7 @@
     
   </section>
     
+  </div>
 
 
 
