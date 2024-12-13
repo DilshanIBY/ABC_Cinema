@@ -13,8 +13,7 @@
     <h5>Settings</h5>
     <ul>
             <li><a href="#main-carousel"><em class="fa fa-star"></em> Main Carousel</a></li>
-            <li><a href="#mini-carousel"><em class="fa fa-envelope"></em> Mini Carousel</a></li>
-            <li><a href="#testimonials"><em class="fa fa-comments"></em> Testimonials</a></li>
+            <li><a href="#testimonials"><em class="fa fa-envelope"></em> Testimonials</a></li>
             <li><a href="#gallery"><em class="fa fa-image"></em> Gallery</a></li>
     </ul>
 </div>
