@@ -13,8 +13,20 @@
 
 
     <div class="error-container">
-        ERROR UI
-        <!-- ERROR UI -->
+        <div class="error-page">
+            <div class="error-content">
+              <div class="marquee">
+                <h1>404</h1>
+                <p>Oops! The page you're looking for doesn't exist.</p>
+                <h1>500</h1>
+                <p>Oops! Internal Server Error.</p>
+              </div>
+              <div class="buttons">
+                <a href="/" class="home-btn">Go to Home</a>
+                <a href="/contact" class="contact-btn">Contact Support</a>
+              </div>
+            </div>
+        </div>
     </div>
     
 
