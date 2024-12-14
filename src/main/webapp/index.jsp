@@ -7,11 +7,17 @@
 <!-- Head Section -->
 <jsp:include page="temps/head.jsp" />
 
- <!-- Header Section -->
+<!-- Header Section -->
 <header>
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="assets/img/hero/cinemography2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
     <div class="logo">ABC CINEMA</div>
     <h1>Experience Magic on the Big Screen</h1>
 </header>
+
 
 <!-- Navigation -->
 <jsp:include page="temps/navbar.jsp" />

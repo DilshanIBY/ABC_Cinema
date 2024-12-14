@@ -90,6 +90,7 @@ window.addEventListener("scroll", () => {
 (function() {
   "use strict";
 
+
   /**
    * Easy selector helper function
    */
@@ -101,6 +102,7 @@ window.addEventListener("scroll", () => {
       return document.querySelector(el)
     }
   }
+
 
   /**
    * Easy event listener function
@@ -116,12 +118,14 @@ window.addEventListener("scroll", () => {
     }
   }
 
+
   /**
    * Easy on scroll event listener 
    */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
   }
+
 
   /**
    * Navbar links active state on scroll
@@ -143,6 +147,7 @@ window.addEventListener("scroll", () => {
   window.addEventListener('load', navbarlinksActive)
   onscroll(document, navbarlinksActive)
 
+
   /**
    * Scrolls to an element with header offset
    */
@@ -156,6 +161,7 @@ window.addEventListener("scroll", () => {
       behavior: 'smooth'
     })
   }
+
 
   /**
    * Toggle .header-scrolled class to #header when page is scrolled
@@ -180,6 +186,7 @@ window.addEventListener("scroll", () => {
     onscroll(document, headerScrolled)
   }
 
+
   /**
    * Back to top button
    */
@@ -196,6 +203,7 @@ window.addEventListener("scroll", () => {
     onscroll(document, toggleBacktotop)
   }
 
+
   /**
    * Mobile nav toggle
    */
@@ -204,6 +212,7 @@ window.addEventListener("scroll", () => {
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
   })
+
 
   /**
    * Mobile nav dropdowns activate
@@ -214,6 +223,7 @@ window.addEventListener("scroll", () => {
       this.nextElementSibling.classList.toggle('dropdown-active')
     }
   }, true)
+
 
   /**
    * Scrool with ofset on links with a class name .scrollto
@@ -233,6 +243,7 @@ window.addEventListener("scroll", () => {
     }
   }, true)
 
+
   /**
    * Scroll with ofset on page load with hash links in the url
    */
@@ -244,6 +255,7 @@ window.addEventListener("scroll", () => {
     }
   });
 
+
   /**
    * Preloader
    */
@@ -253,58 +265,6 @@ window.addEventListener("scroll", () => {
       preloader.remove()
     });
   }
-
-  /**
-   * Menu isotope and filter
-   */
-  window.addEventListener('load', () => {
-    let menuContainer = select('.menu-container');
-    if (menuContainer) {
-      let menuIsotope = new Isotope(menuContainer, {
-        itemSelector: '.menu-item',
-        layoutMode: 'fitRows'
-      });
-
-      let menuFilters = select('#menu-flters li', true);
-
-      on('click', '#menu-flters li', function(e) {
-        e.preventDefault();
-        menuFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
-
-        menuIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        menuIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
-      }, true);
-    }
-
-  });
-
-
-  /**
-   * Events slider
-   */
-  new Swiper('.events-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
-
-
 
 
   /**
@@ -336,12 +296,14 @@ window.addEventListener("scroll", () => {
     }
   });
 
+
   /**
    * Initiate gallery lightbox 
    */
   const galleryLightbox = GLightbox({
     selector: '.gallery-lightbox'
   });
+
 
   /**
    * Animation on scroll

@@ -7,19 +7,19 @@
         <h1>BC CINEMA</h1>
     </div>
     
-    <a href="book#make-reservation" class="make-reservation-btn scrollto d-none d-lg-flex">Make Reservation</a>
+    <a href="reservation.jsp" class="make-reservation-btn scrollto d-none d-lg-flex">Make Reservation</a>
 
   </div>
 </div><!-- End Header -->
 
 <!-- Navigation -->
-<nav>
+<nav id="navbar">
     <ul>
-        <li><a href="#NOW SHOWING">Now Showing</a></li>
-        <li><a href="#COMING SOON">Upcoming</a></li>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="movies.jsp">Movies</a></li>
+        <li><a href="index.jsp#gallery">Gallery</a></li>
+        <li><a href="index.jsp">Home</a></li>
+        <li><a href="feedback.jsp">Feedback</a></li>
+        <li><a href="contactUs.jsp">Contact</a></li>
     </ul>
 </nav>
     
