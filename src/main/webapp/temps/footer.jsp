@@ -12,11 +12,11 @@
                   <strong>Email: </strong>contact@abccinema.com<br>
                 </p>
                 <div class="social-links mt-3">
-                  <a href="contact#contact" class="twitter"><i class="bx bxl-twitter"></i></a>
-                  <a href="contact#contact" class="facebook"><i class="bx bxl-facebook"></i></a>
-                  <a href="contact#contact" class="instagram"><i class="bx bxl-instagram"></i></a>
-                  <a href="contact#contact" class="tiktok"><i class="bx bxl-tiktok"></i></a>
-                  <a href="contact#contact" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                  <a href="contactUs.jsp" class="twitter"><i class="bx bxl-twitter"></i></a>
+                  <a href="contactUs.jsp" class="facebook"><i class="bx bxl-facebook"></i></a>
+                  <a href="contactUs.jsp" class="instagram"><i class="bx bxl-instagram"></i></a>
+                  <a href="contactUs.jsp" class="tiktok"><i class="bx bxl-tiktok"></i></a>
+                  <a href="contactUs.jsp" class="linkedin"><i class="bx bxl-linkedin"></i></a>
                 </div>
               </div>
             </div>
@@ -24,22 +24,22 @@
             <div class="col-lg-2 col-md-6 footer-links">
               <h4>Useful Links</h4>
               <ul>
-                <li><i class="bx bx-chevron-right"></i> <a href="">Home</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="home#about">About us</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="home#events">Services</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="contact#contact">Terms of service</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="contact#contact">Privacy policy</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="index.jsp">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="index.jsp#gallery">Gallery</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="index.jsp#testimonials">Testimonials</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="contactUs.jsp">Terms of service</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="contactUs.jsp">Privacy policy</a></li>
               </ul>
             </div>
 
             <div class="col-lg-3 col-md-6 footer-links">
               <h4>Our Services</h4>
               <ul>
-                <li><i class="bx bx-chevron-right"></i> <a href="home#gallery">Reservations</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="contact#contact">Movies</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="contact#contact">Profile</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="contact#contact">Feedback</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="home#gallery">Contact Us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="reservation.jsp">Reservations</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="movies.jsp">Movies</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="profile.jsp">Profile</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="feedback.jsp">Feedback</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="contactUs.jsp">Contact Us</a></li>
               </ul>
             </div>
               
@@ -62,7 +62,7 @@
           &copy; Copyright <strong><span>ABC CINEMA</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-          Designed by <a href="https://www.nsbm.ac.lk/" target="_blank">Plymouth Computing Students</a>
+          Designed by <a href="https://www.plymouth.ac.uk" target="_blank">Plymouth Computing Students</a>
         </div>
       </div>
     </footer><!-- End Footer -->

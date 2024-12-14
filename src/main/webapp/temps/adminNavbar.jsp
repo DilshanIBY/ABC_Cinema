@@ -7,7 +7,7 @@
                 </div>
                 <div class="column column-30">
                         <div class="user-section"><a href="#">
-                                <img src="abc.jpg" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto" />
+                                <img src="assets/img/testimonials/testimonials-1.jpg" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto" />
                                 <div class="username">
                                         <h4>Dilshan Irugal</h4>
                                         <p>Administrator</p>
