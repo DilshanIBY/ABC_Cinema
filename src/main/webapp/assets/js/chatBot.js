@@ -152,34 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
         chatBubble.style.display = 'flex';
     });
 
-    // Message handling
-    function addMessage(message, isUser = false) {
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message');
-        messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-        messageDiv.textContent = message;
-        chatBody.appendChild(messageDiv);
-        chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
-    function handleMessage() {
-        const message = messageInput.value.trim();
-        if (message) {
-            addMessage(message, true);
-            messageInput.value = '';
-            setTimeout(() => {
-                addMessage('Thank you for your message. Our team will assist you shortly.');
-            }, 1000);
-        }
-    }
-    sendMessage.addEventListener('click', handleMessage);
-
-    messageInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            handleMessage();
-        }
-    });
-
     // Prevent text selection during drag
     chatHeader.addEventListener('selectstart', function(e) {
         e.preventDefault();
@@ -290,44 +262,89 @@ document.addEventListener('DOMContentLoaded', function() {
         chatBody.scrollTop = chatBody.scrollHeight;
         return typingDiv;
     }
+    
+    
+    
+    
+    
 
-    // Enhanced message handling
+    // Function to add messages to the chat UI
+    function addMessage(message, isUser = false, isHtml = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+        if (isHtml) {
+            messageDiv.innerHTML = message; // Render HTML content
+        } else {
+            messageDiv.textContent = message; // Render plain text
+        }
+        chatBody.appendChild(messageDiv);
+        chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the latest message
+    }
+
+
+    // Function to show a typing indicator
+    function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.classList.add('typing-indicator');
+        typingDiv.textContent = 'Bot is typing...';
+        chatBody.appendChild(typingDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        return typingDiv;
+    }
+
+    // Enhanced message handling with servlet integration
     async function handleMessageEnhanced() {
         const message = messageInput.value.trim();
         if (message) {
-            // Play sound if not muted
-            try {
-                await messageSound.play();
-            } catch (e) {
-                console.log('Sound disabled or not supported');
-            }
-
-            // Add user message
+            // Add the user's message to the chat
             addMessage(message, true);
             messageInput.value = '';
 
             // Show typing indicator
             const typingIndicator = showTypingIndicator();
 
-            // Simulate bot response after delay
-            setTimeout(() => {
+            try {
+                // Prepare request payload
+                const payload = {
+                    message: message
+                };
+
+                // Send request to the ChatBotServlet
+                const response = await fetch('http://localhost:8080/ABC_Cinema_Reservation/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
                 typingIndicator.remove();
-                addMessage('Thank you for your message. Our team will assist you shortly.');
-            }, 1500);
+
+                if (response.ok) {
+                    // Parse the API response
+                    const data = await response.json();
+                    const botMessage = data.response || 'Sorry, I didn\'t understand that.';
+                    addMessage(botMessage,false,true);
+                } else {
+                    addMessage('An error occurred while connecting to the chatbot. Please try again later.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                typingIndicator.remove();
+                addMessage('An error occurred. Please check your network connection.');
+            }
         }
     }
 
-    // Replace old handler with enhanced version
-    sendMessage.removeEventListener('click', handleMessage);
+    // Event listeners for sending messages
     sendMessage.addEventListener('click', handleMessageEnhanced);
 
-    messageInput.removeEventListener('keypress', function(e) {
-        if (e.key === 'Enter') handleMessage();
-    });
-    messageInput.addEventListener('keypress', function(e) {
+    messageInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             handleMessageEnhanced();
         }
     });
+
 });

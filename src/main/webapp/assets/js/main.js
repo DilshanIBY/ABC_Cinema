@@ -84,8 +84,12 @@ window.addEventListener("scroll", () => {
     }
 });
 
-
-
+// Add Paralex animation to hero section
+document.addEventListener('scroll', function () {
+    const scrollPosition = window.scrollY;
+    const bgVideo = document.querySelector('.bg-video');
+    bgVideo.style.transform = `translateY(${scrollPosition * 0.5}px)`; // Adjusts speed (0.5 for slower movement)
+});
 
 (function() {
   "use strict";
