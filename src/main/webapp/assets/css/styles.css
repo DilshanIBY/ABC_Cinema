@@ -30,37 +30,50 @@ body {
     background-color: var(--black);
     color: white;
 }
- /* Header Styles */
+/* Header Styles */
 header {
-    background: linear-gradient(-50deg, #cda45e, #0c0b09, #1a1814, #ffcc00, #000000);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    color: white;
-    padding: 2rem;
-    text-align: center;
+    position: relative;
     height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
+    align-items: center;
+    text-align: center;
+    color: white;
     overflow: hidden;
 }
 
-header::before {
-    content: '';
+/* Background Video */
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Overlay for Gradient Effect */
+header .overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(-50deg, #cda45e, #0c0b09, #1a1814, #ffcc00, #000000);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    opacity: 0.7;
+    z-index: 0;
+}
+
+/* Positioning and Content Styling */
+header .logo, header h1 {
+    position: relative;
     z-index: 1;
 }
 
-header * {
-    position: relative;
-    z-index: 2;
-}
 
 .logo {
     font-size: 4rem;
