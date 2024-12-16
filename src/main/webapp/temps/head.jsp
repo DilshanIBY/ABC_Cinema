@@ -22,7 +22,8 @@
   
     <!-- From CDNs -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet" />
-    
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet" />
+  
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/styles.css" />
     

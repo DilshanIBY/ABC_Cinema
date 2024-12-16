@@ -4,9 +4,41 @@
         <servlet-name>ChatBot</servlet-name>
         <servlet-class>ml.ChatBot</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddItem</servlet-name>
+        <servlet-class>utils.AddItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteItem</servlet-name>
+        <servlet-class>utils.DeleteItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateItem</servlet-name>
+        <servlet-class>utils.UpdateItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UploadItem</servlet-name>
+        <servlet-class>utils.UploadItem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ChatBot</servlet-name>
         <url-pattern>/chat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddItem</servlet-name>
+        <url-pattern>/addItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteItem</servlet-name>
+        <url-pattern>/deleteItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateItem</servlet-name>
+        <url-pattern>/updateItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadItem</servlet-name>
+        <url-pattern>/uploadItem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

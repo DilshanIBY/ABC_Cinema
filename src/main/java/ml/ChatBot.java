@@ -58,7 +58,7 @@ public class ChatBot extends HttpServlet {
             messages.add(createMessage("system", "If user is asking something that needs to do an ADD, UPDATE, or DELETE operation to the database, make sure to format your response as this-> ['THE SQL QUERY TO PERFORM THE ACTION','YOUR MESSAGE TO THE USER ASSUMING THAT THE OPERATION IS COMPLETE']"));
             messages.add(createMessage("system", "Never output SQL queries for SELECT type operations. Do the search by your own from below database."));
             messages.add(createMessage("system", "The whole database: " + new DatabaseReader().allDatabase()));
-            messages.add(createMessage("system", "This user's user_id:1 FirstName:Zandya"));
+            messages.add(createMessage("system", "This user's user_id:1 FirstName:Dilshan"));
             messages.add(createMessage("system", "Last message from you to this user 'last_msg':" + new DatabaseReader().lastMsg(1)));
             messages.add(createMessage("user", userMessage));
 

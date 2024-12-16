@@ -1,6 +1,9 @@
 /*//////////////////////*/
 /* MAIN Admin Styles */ 
 /*//////////////////////*/
+.grid-responsive {
+    display: none; /* Ensure sections are hidden by default */
+}
 
 body {
   background: #000;
@@ -78,7 +81,7 @@ hr {
   border-radius: 499rem; }
 
 td, th {
-  border-bottom: 0.1rem solid #eee; }
+  border-bottom: 0.1rem solid #1c1c1c; }
 
 /*For demo purposes only*/
 a.anchor {
@@ -146,11 +149,15 @@ a.anchor {
   margin-left: 3rem; }
 
 /*Forms Elements & Buttons*/
-input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='url'], textarea, select {
+input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='datetime-local'], input[type='url'], textarea, select {
   border: 1px solid #000 !important;
 	color: #fff; }
 
-input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus, textarea:focus, select:focus {
+input[type='datetime-local']{
+    background-color: transparent;
+}
+
+input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='datetime-local']:focus, input[type='url']:focus, textarea:focus, select:focus {
   border: 1px solid #cda45e !important; }
 
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
@@ -199,15 +206,17 @@ input[type='email']:focus, input[type='number']:focus, input[type='password']:fo
 .button.button-clear[disabled]:focus, .button.button-clear[disabled]:hover, button.button-clear[disabled]:focus, button.button-clear[disabled]:hover, input[type='button'].button-clear[disabled]:focus, input[type='button'].button-clear[disabled]:hover, input[type='reset'].button-clear[disabled]:focus, input[type='reset'].button-clear[disabled]:hover, input[type='submit'].button-clear[disabled]:focus, input[type='submit'].button-clear[disabled]:hover {
   color: #cda45e; }
 
-input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='url'], textarea, select {
-  border: 0.1rem solid #eee !important;
+input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='datetime-local'], input[type='url'], textarea, select {
+  border: 0.1rem solid #1c1c1c !important;
   border-radius: .4rem;
   box-shadow: none; }
 
-input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='url'], select {
-  max-width: 60rem; }
+input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='datetime-local'], input[type='url'], select {
+  max-width: 60rem;    
+  padding: 5px;
+  height: auto; }
 
-input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus, textarea:focus, select:focus {
+input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='datetime-local']:focus, input[type='url']:focus, textarea:focus, select:focus {
   border-color: #cda45e;
   outline: 0; }
 
@@ -524,7 +533,7 @@ select:focus {
 
 .chef,
 .testimonial {
-    border: 1px solid #ccc;
+    border: 1px solid #414141;
     border-radius: 5px;
     padding: 20px;
     display: flex;
@@ -568,7 +577,7 @@ select:focus {
 
 .new-chef,
 .new-testimonial {
-    border: 1px dashed #aaa;
+    border: 1px dashed #414141;
     padding: 15px;
     justify-content: space-between;
     align-items: center;
@@ -598,12 +607,12 @@ select:focus {
 }
 
 /* Booking and Emails section styles */
-.booking-list,
+.theater-list,
 .email-list {
   list-style: none;
 }
 
-.booking-item,
+.theater-item,
 .email-item {
   position: relative;
   margin-bottom: 20px;
@@ -613,28 +622,28 @@ select:focus {
   background: #000;
 }
 
-.booking-item.open,
+.theater-item.open,
 .email-item.open {
   border: 1px solid #cda45e;
 }
 
-.booking-item p,
+.theater-item p,
 .email-item p {
   margin: 0;
 }
 
-.booking-item.open .booking-header span,
-.booking-item.open .booking-header p,
+.theater-item.open .theater-header span,
+.theater-item.open .theater-header p,
 .email-item.open .email-header span {
   color: #cda45e;
 }
 
-.booking-header,
+.theater-header,
 .email-header {
   cursor: pointer;
 }
 
-.booking-header{
+.theater-header{
   margin-bottom: 10px;
 }
 
@@ -651,17 +660,17 @@ select:focus {
   top: 40px;
 }
 
-.booking-header h4,
+.theater-header h4,
 .email-header h4 {
   color: #cda45e;
 }
 
-.booking-details,
+.theater-details,
 .email-details {
   display: none;
 }
 
-.booking-list .deleteBtn,
+.theater-list .deleteBtn,
 .email-list .deleteBtn {
   position: absolute;
   top: 10px;
@@ -1175,6 +1184,32 @@ form button {
     background: #a67a42;
 }
 
+.movie-details {
+    background-color: hsl(0deg 0% 0% / 50%);
+    width: 100%;
+    padding: 10px;
+}
+
+.movie-details h5 {
+    margin: 0;
+    color: var(--main-color);
+}
+
+.movie-details p {
+    margin: 0;
+}
+
+.movie-actions{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: var(--main-color);
+    font-size: 12px;
+}
+
+.movie-actions i:hover{
+    color: #c37b00;
+}
 
 
 /*//////////////////////*/
@@ -1194,7 +1229,14 @@ form button {
 /*//////////////////////*/
 /* FEEDBACKS Admin Styles */ 
 /*//////////////////////*/
-
+.feedback-table td .profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    border: 2px solid var(--main-color);
+}
 
 
 
@@ -1279,19 +1321,19 @@ form button {
     text-align: left;
 }
 
-.user-table th, .user-table td {
+th, td {
     padding: 10px;
     border-bottom: 1px solid var(--tertiary-color);
     vertical-align: middle;
     text-align: center; /* Center align text */
 }
 
-.user-table th {
+th {
     background-color: var(--tertiary-color);
     color: var(--main-color);
 }
 
-.user-table tr:hover {
+tr:hover {
     background-color: rgba(205, 164, 94, 0.2);
 }
 
