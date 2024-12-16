@@ -41,7 +41,7 @@
                 <span><strong>Contact:</strong> <%= contact %></span>
                 <span><strong>Email Address:</strong> <%= emailAddress %></span>
             </div>
-            <button class="edit-profile-button">Edit Profile</button>
+            <button class="edit-profile-button" onclick="window.location.href='userdetails.jsp';">Edit Profile</button>
         </div>
     </div>
     <div class="history-container">
