@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatWindow = document.getElementById('chatWindow');
     const chatHeader = document.getElementById('chatHeader');
     const closeChat = document.getElementById('closeChat');
+    const newChat = document.getElementById('newChat');
     const messageInput = document.getElementById('messageInput');
     const sendMessage = document.getElementById('sendMessage');
     const chatBody = document.getElementById('chatBody');
@@ -139,18 +140,56 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Chat bubble click handler
-    chatBubble.addEventListener('click', function(e) {
+    chatBubble.addEventListener('click', function () {
         if (!moveStarted) {
-            chatWindow.style.display = 'flex';
+            chatWindow.style.display = 'flex'; // Make sure the element is visible
+            setTimeout(() => chatWindow.classList.add('show'), 0); // Trigger animation
             chatBubble.style.display = 'none';
         }
     });
 
     // Close chat handler
-    closeChat.addEventListener('click', function() {
-        chatWindow.style.display = 'none';
-        chatBubble.style.display = 'flex';
+    closeChat.addEventListener('click', function () {
+        chatWindow.classList.remove('show'); // Start fade-out animation
+        setTimeout(() => {
+            chatWindow.style.display = 'none'; // Hide completely after animation
+            chatBubble.style.display = 'flex';
+        }, 100); // Match the transition duration
     });
+    
+
+    // New chat handler
+    newChat.addEventListener('click', function () {
+        // Clear all messages from the chat window
+        chatBody.innerHTML = '';
+
+        // Create message wrapper for the bot message
+        const messageWrapper = document.createElement('div');
+        messageWrapper.classList.add('any-msgs');
+
+        // Add image for the bot
+        const img = document.createElement('img');
+        img.src = 'assets/img/icons/any.png'; // Bot's image
+        img.alt = 'ABC Cinema Bot';
+        img.classList.add('from-any-img');
+        messageWrapper.appendChild(img);
+
+        // Create message div for the bot's message
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', 'bot-message');
+        messageDiv.textContent = "Ok. Let's start over. Any happy to help you for anything? 😄"; // Bot's message
+        messageWrapper.appendChild(messageDiv);
+
+        // Append the message wrapper to the chat body
+        chatBody.appendChild(messageWrapper);
+
+        // Scroll to the latest message
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        // Optional: Reset any other variables or states related to the current chat session
+        messageInput.value = ''; // Clear the message input field
+    });
+
 
     // Prevent text selection during drag
     chatHeader.addEventListener('selectstart', function(e) {
@@ -267,27 +306,90 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     
-
-    // Function to add messages to the chat UI
+    
+    // Message adding
     function addMessage(message, isUser = false, isHtml = false) {
+        // Create parent div for user or bot messages
+        const messageWrapper = document.createElement('div');
+        messageWrapper.classList.add(isUser ? 'user-msgs' : 'any-msgs');
+
+        // Add image for user or bot
+        const img = document.createElement('img');
+        img.src = isUser ? 'assets/img/icons/user.jpg' : 'assets/img/icons/any.png';
+        img.alt = isUser ? 'User' : 'ABC Cinema Bot';
+        img.classList.add(isUser ? 'from-user-img' : 'from-any-img');
+        messageWrapper.appendChild(img);
+
+        // Create message div
         const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message');
-        messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-        if (isHtml) {
-            messageDiv.innerHTML = message; // Render HTML content
+        messageDiv.classList.add('message', isUser ? 'user-message' : 'bot-message');
+
+        // Append message content
+        if (!isUser && !isHtml) {
+            // Handle real-time typing for bot messages with HTML rendering
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = message; // Parse HTML into segments
+            const segments = Array.from(tempDiv.childNodes); // Extract child nodes
+            let segmentIndex = 0;
+
+            function typeSegment() {
+                if (segmentIndex < segments.length) {
+                    const segment = segments[segmentIndex];
+
+                    if (segment.nodeType === Node.TEXT_NODE) {
+                        // Handle text node typing character by character
+                        const text = segment.textContent;
+                        let charIndex = 0;
+
+                        function typeCharacter() {
+                            if (charIndex < text.length) {
+                                messageDiv.append(text[charIndex]); // Append one character
+                                charIndex++;
+                                chatBody.scrollTop = chatBody.scrollHeight; // Scroll as content grows
+                                setTimeout(typeCharacter, 10); // Typing speed for characters
+                            } else {
+                                segmentIndex++;
+                                typeSegment(); // Move to the next segment
+                            }
+                        }
+
+                        typeCharacter(); // Start typing the text node
+                    } else {
+                        // For non-text nodes (e.g., <b>, <i>), append them entirely
+                        const clonedSegment = segment.cloneNode(true);
+                        messageDiv.appendChild(clonedSegment);
+                        segmentIndex++;
+                        chatBody.scrollTop = chatBody.scrollHeight; // Scroll as content grows
+                        setTimeout(typeSegment, 200); // Small pause for non-text elements
+                    }
+                }
+            }
+
+            typeSegment(); // Start typing the segments
         } else {
-            messageDiv.textContent = message; // Render plain text
+            if (isHtml) {
+                messageDiv.innerHTML = message; // Render HTML content directly
+            } else {
+                messageDiv.textContent = message; // Escape plain text to prevent XSS
+            }
         }
-        chatBody.appendChild(messageDiv);
+
+        // Append message div to the wrapper
+        messageWrapper.appendChild(messageDiv);
+
+        // Append the wrapper to the chat body
+        chatBody.appendChild(messageWrapper);
         chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the latest message
     }
+
+
 
 
     // Function to show a typing indicator
     function showTypingIndicator() {
         const typingDiv = document.createElement('div');
         typingDiv.classList.add('typing-indicator');
-        typingDiv.textContent = 'Bot is typing...';
+        typingDiv.innerHTML = '<span></span><span></span><span></span>';
         chatBody.appendChild(typingDiv);
         chatBody.scrollTop = chatBody.scrollHeight;
         return typingDiv;
@@ -305,6 +407,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const typingIndicator = showTypingIndicator();
 
             try {
+                // Simulate typing delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
                 // Prepare request payload
                 const payload = {
                     message: message
@@ -325,7 +430,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Parse the API response
                     const data = await response.json();
                     const botMessage = data.response || 'Sorry, I didn\'t understand that.';
-                    addMessage(botMessage,false,true);
+                    addMessage(botMessage, false, false);
                 } else {
                     addMessage('An error occurred while connecting to the chatbot. Please try again later.');
                 }
@@ -346,5 +451,7 @@ document.addEventListener('DOMContentLoaded', function() {
             handleMessageEnhanced();
         }
     });
+
+
 
 });
