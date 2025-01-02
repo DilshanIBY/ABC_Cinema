@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Add image for the bot
         const img = document.createElement('img');
-        img.src = 'assets/img/icons/any.png'; // Bot's image
+        img.src = 'assets/img/icons/chatBot.png'; // Bot's image
         img.alt = 'ABC Cinema Bot';
         img.classList.add('from-any-img');
         messageWrapper.appendChild(img);
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Add image for user or bot
         const img = document.createElement('img');
-        img.src = isUser ? 'assets/img/icons/user.jpg' : 'assets/img/icons/any.png';
+        img.src = isUser ? 'assets/img/icons/user.jpg' : 'assets/img/icons/chatBot.png';
         img.alt = isUser ? 'User' : 'ABC Cinema Bot';
         img.classList.add(isUser ? 'from-user-img' : 'from-any-img');
         messageWrapper.appendChild(img);

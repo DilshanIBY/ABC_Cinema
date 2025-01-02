@@ -16,7 +16,6 @@
 
     <div class="feedback-container">
         
-        <img src="https://files.cdn-files-a.com/uploads/10008872/2000_6745a9f728851.png?width=1600" width="800">
         <form>
             <!-- Question 1 -->
             <div class="section">

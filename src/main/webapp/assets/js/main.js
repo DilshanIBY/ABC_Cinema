@@ -97,6 +97,22 @@ document.addEventListener('scroll', function () {
     bgVideo.style.transform = `translateY(${scrollPosition * 0.999}px)`; // Adjusts speed (0.5 for slower movement)
 });
 
+
+// Automatically scroll to the newsletter section
+document.addEventListener("DOMContentLoaded", function () {
+    // Get URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get("message");
+
+    // Check if the message parameter exists
+    if (message) {
+        const newsletterSection = document.getElementById("newsletter");
+        if (newsletterSection) {
+            newsletterSection.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+});
+
 (function() {
   "use strict";
 
@@ -305,6 +321,38 @@ document.addEventListener('scroll', function () {
       }
     }
   });
+  
+  
+    /**
+   * Theaters slider
+   */
+  new Swiper('.theaters-slider', {
+    slidesPerView: 'auto',
+    spaceBetween: 30,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20
+      },
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      }
+    }
+  });
+
 
 
   /**
@@ -428,6 +476,35 @@ function togglePassword(button) {
 ////////////////////////////////////
 //////// PROFILE PAGE Scripts ///////
 ////////////////////////////////////
+document.addEventListener("DOMContentLoaded", () => {
+    const deleteIcons = document.querySelectorAll(".fa-trash.icon");
+
+    deleteIcons.forEach((icon) => {
+        icon.addEventListener("click", () => {
+            const confirmation = confirm("Are you sure you want to cancel this reservation?");
+            if (confirmation) {
+                const reservationId = icon.getAttribute("data-id"); // Get reservation ID
+                cancelReservation(reservationId); // Call cancel function
+            }
+        });
+    });
+
+    function cancelReservation(reservationId) {
+        fetch('CancelReservation', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `reservationId=${reservationId}`
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data); // Show response message
+            location.reload(); // Reload the page to refresh booking history
+        })
+        .catch(error => console.error('Error:', error));
+    }
+});
+
+
 function openPhotoViewer() {
     const avatar = document.getElementById('avatar');
     const fullImage = document.createElement('img');

@@ -13,7 +13,7 @@
     <div class="chat-header" id="chatHeader">
         
         <div class="chat-Top" id="chatTop">
-            <img src="assets/img/icons/any.png" alt="ABC Cinema Bot" class="bot-avatar">
+            <img src="assets/img/icons/chatBot.png" alt="ABC Cinema Bot" class="bot-avatar">
             <div>
                 <h6 class="mb-0 text-white">Hello Dilshan!</h6>
                 <small class="text-gold">ANY Online</small>
@@ -28,7 +28,7 @@
             <!-- Chat Body -->
             <div class="chat-body" id="chatBody">
                 <div class="any-msgs">
-                    <img src="assets/img/icons/any.png" alt="ABC Cinema Bot" class="from-any-img">
+                    <img src="assets/img/icons/chatBot.png" alt="ABC Cinema Bot" class="from-any-img">
                     <div class="message bot-message">
                         Hello! ANY here. How can I assist you today? &#128578;
                     </div>

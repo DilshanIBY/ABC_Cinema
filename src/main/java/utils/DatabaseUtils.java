@@ -16,7 +16,8 @@ public class DatabaseUtils {
         while (rs.next()) {
             Map<String, String> row = new HashMap<>();
             for (int i = 1; i <= columnCount; i++) {
-                row.put(metaData.getColumnName(i), rs.getString(i));
+                // Use getColumnLabel instead of getColumnName to respect aliases
+                row.put(metaData.getColumnLabel(i), rs.getString(i));
             }
             dataList.add(row);
         }

@@ -42,7 +42,7 @@
                                     <div class="movie-meta">
                                         <span class="movie-date">Showing Now</span>
                                     </div>
-                                    <button class="book-btn">Book Now</button>
+                                        <button class="book-btn" onclick="window.location.href='reservation.jsp?movie_id=<%= movie.getMovieId() %>';">Book Now</button>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                                         <span class="movie-rating">Coming Soon</span>
                                         <span class="movie-date"><%= movie.getReleaseDate() != null ? movie.getReleaseDate() : "TBD" %></span>
                                     </div>
-                                    <button class="book-btn">Notify Me</button>
+                                    <button class="book-btn" onclick="window.location.href='<%= movie.getTrailerUrl() != null ? movie.getTrailerUrl() : "TBD" %>';">Watch Trailer</button>
                                 </div>
                             </div>
                         </div>

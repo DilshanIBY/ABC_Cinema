@@ -1,18 +1,23 @@
 package models;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class User {
-    private int userId;
-    private String username;
-    private String email;
-    private String password;
-    private String fullName;
-    private String status; 
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
 
+    public User(int aInt, String string, String string1, String string2, String string3) {
+    }
+    private int userId;
+    private String name;
+    private String email;
+    private String phone;
+    private String password;
+    private String profilePhoto;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     
+    
+
+    // Getters and Setters
     public int getUserId() {
         return userId;
     }
@@ -21,12 +26,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -37,6 +42,14 @@ public class User {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -45,36 +58,27 @@ public class User {
         this.password = password;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getProfilePhoto() {
+        return profilePhoto;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Timestamp getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Timestamp getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
-

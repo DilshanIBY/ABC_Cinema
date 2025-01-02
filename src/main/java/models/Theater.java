@@ -1,20 +1,13 @@
-// Placeholder content for Theater.java
-import java.util.ArrayList;
-import java.util.List;
+package models;
 
 public class Theater {
     private int theaterId;
-    private String theaterName;
-    private int totalSeats;
-    private List<Seat> seats;
+    private String name;
+    private String location;
+    private int seatingCapacity;
+    private String imageUrl;
 
-    public Theater(int theaterId, String theaterName, int totalSeats) {
-        this.theaterId = theaterId;
-        this.theaterName = theaterName;
-        this.totalSeats = totalSeats;
-        this.seats = new ArrayList<>();
-    }
-
+    // Getters and Setters
     public int getTheaterId() {
         return theaterId;
     }
@@ -23,37 +16,35 @@ public class Theater {
         this.theaterId = theaterId;
     }
 
-    public String getTheaterName() {
-        return theaterName;
+    public String getName() {
+        return name;
     }
 
-    public void setTheaterName(String theaterName) {
-        this.theaterName = theaterName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getTotalSeats() {
-        return totalSeats;
+    public String getLocation() {
+        return location;
     }
 
-    public void setTotalSeats(int totalSeats) {
-        this.totalSeats = totalSeats;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public List<Seat> getSeats() {
-        return seats;
+    public int getSeatingCapacity() {
+        return seatingCapacity;
     }
 
-    public void addSeat(Seat seat) {
-        this.seats.add(seat);
+    public void setSeatingCapacity(int seatingCapacity) {
+        this.seatingCapacity = seatingCapacity;
     }
 
-    @Override
-    public String toString() {
-        return "Theater{" +
-                "theaterId=" + theaterId +
-                ", theaterName='" + theaterName + '\'' +
-                ", totalSeats=" + totalSeats +
-                ", seats=" + seats +
-                '}';
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

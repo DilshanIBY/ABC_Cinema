@@ -20,6 +20,34 @@
         <servlet-name>UploadItem</servlet-name>
         <servlet-class>utils.UploadItem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Subscribe</servlet-name>
+        <servlet-class>models.Subscribe</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcessPayment</servlet-name>
+        <servlet-class>utils.ProcessPayment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmPayment</servlet-name>
+        <servlet-class>utils.ConfirmPayment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>utils.Register</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmailSender</servlet-name>
+        <servlet-class>utils.EmailSender</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CancelReservation</servlet-name>
+        <servlet-class>utils.CancelReservation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>utils.Login</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ChatBot</servlet-name>
         <url-pattern>/chat</url-pattern>
@@ -39,6 +67,34 @@
     <servlet-mapping>
         <servlet-name>UploadItem</servlet-name>
         <url-pattern>/uploadItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Subscribe</servlet-name>
+        <url-pattern>/subscribe</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessPayment</servlet-name>
+        <url-pattern>/ProcessPayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmPayment</servlet-name>
+        <url-pattern>/ConfirmPayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmailSender</servlet-name>
+        <url-pattern>/SendEmail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelReservation</servlet-name>
+        <url-pattern>/CancelReservation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,56 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="controllers.UserController" %>
-<%@ page import="models.User" %>
-<%@ page import="java.util.List" %>
 
-<%
-    
-    UserController userController = new UserController();
-    String message = null;
 
-    try {
-        
-        if (request.getParameter("loginSubmit") != null) {
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-
-            
-            List<User> users = userController.getAllUsers();
-            User loggedInUser = users.stream()
-                .filter(u -> u.getEmail().equals(email) && u.getPassword().equals(password))
-                .findFirst().orElse(null);
-
-            if (loggedInUser != null) {
-                session.setAttribute("user", loggedInUser);
-                response.sendRedirect("movies.jsp"); 
-                return; 
-            } else {
-                message = "Invalid email or password.";
-            }
-        }
-
-        
-        if (request.getParameter("registerSubmit") != null) {
-            String fullName = request.getParameter("fullName");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-
-            User newUser = new User();
-            newUser.setFullName(fullName);
-            newUser.setEmail(email);
-            newUser.setPassword(password);
-            newUser.setStatus("active");
-
-            if (userController.createUser(newUser)) {
-                message = "Account created successfully. Please log in.";
-            } else {
-                message = "Error creating account. Please try again.";
-            }
-        }
-    } catch (Exception e) {
-        message = "An error occurred: " + e.getMessage();
-    }
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,21 +26,20 @@
     
     <div class="auth-container">
         <div class="auth-card">
-             <% if (message != null) { %>
-                <div class="alert alert-info"><%= message %></div>
-            <% } %>
+            <!--<div class="alert alert-info">${error}</div>-->
+
             <!-- Login Form -->
             <div id="loginForm">
                 <h2 class="auth-title">Welcome Back</h2>
-                <p class="auth-subtitle">Sign in to continue</p>
-                <form method="post" action="<%= request.getRequestURI() %>">
+                <p class="auth-subtitle">To ABC Cinema</p>
+                <form method="post" action="login">
                     <div class="mb-3">
                         <label class="form-label">Email Address</label>
                         <div class="input-group">
                             <span class="input-group-text">
                                 <i class="fas fa-envelope"></i>
                             </span>
-                            <input type="email" class="form-control" placeholder="name@example.com" required>
+                            <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -99,7 +48,7 @@
                             <span class="input-group-text">
                                 <i class="fas fa-lock"></i>
                             </span>
-                            <input type="password" class="form-control" placeholder="????????" required>
+                            <input type="password" name="password" class="form-control" placeholder="**********" required>
                             <button type="button" class="password-toggle" onclick="togglePassword(this)">
                                 <i class="fas fa-eye"></i>
                             </button>
@@ -123,15 +72,15 @@
             <!-- Register Form -->
             <div id="registerForm" style="display: none;">
                 <h2 class="auth-title">Create Account</h2>
-                <p class="auth-subtitle">Register a new account</p>
-                <form method="post" action="<%= request.getRequestURI() %>">
+                <p class="auth-subtitle">Join ABC Cinema</p>
+                <form method="post" action="register">
                     <div class="mb-3">
                         <label class="form-label">Full Name</label>
                         <div class="input-group">
                             <span class="input-group-text">
                                 <i class="fas fa-user"></i>
                             </span>
-                            <input type="text" class="form-control" placeholder="John Doe" required>
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -140,7 +89,16 @@
                             <span class="input-group-text">
                                 <i class="fas fa-envelope"></i>
                             </span>
-                            <input type="email" class="form-control" placeholder="name@example.com" required>
+                            <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            <input type="text" name="phone" class="form-control" placeholder="0771234567" required>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -149,7 +107,7 @@
                             <span class="input-group-text">
                                 <i class="fas fa-lock"></i>
                             </span>
-                            <input type="password" class="form-control" placeholder="????????" required>
+                            <input type="password" name="password" class="form-control" placeholder="**********" required>
                             <button type="button" class="password-toggle" onclick="togglePassword(this)">
                                 <i class="fas fa-eye"></i>
                             </button>
@@ -164,7 +122,10 @@
             </div>
         </div>
     </div>
-        <script>
+    
+    
+    
+    <script>
         function toggleForms() {
             const loginForm = document.getElementById("loginForm");
             const registerForm = document.getElementById("registerForm");
@@ -172,14 +133,10 @@
             registerForm.style.display = registerForm.style.display === "none" ? "block" : "none";
         }
     </script>
-
-
-
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
 
+    
+    
 </body>
 </html>

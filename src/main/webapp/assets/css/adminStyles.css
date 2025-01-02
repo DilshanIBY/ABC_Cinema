@@ -354,12 +354,10 @@ select:focus {
 .badge {
   padding: 5px 10px;
   border-radius: 499px;
-  color: #0c0b09;
   font-size: .8em;
   height: 28px;
   min-width: 28px;
-  text-align: center;
-  background-color: #888; }
+  text-align: center; }
 
 .background-primary {
   background: #cda45e; }
@@ -996,7 +994,60 @@ form {
 /*//////////////////////*/
 /* OVERVIEW Admin Styles */ 
 /*//////////////////////*/
+/* Main Colors */
+:root {
+    --gold: #cda45e;
+    --chocolate: #0c0b09;
+    --oil: #1a1814;
+    --black: #000000;
+}
 
+/* Cards Styling */
+.stats-card {
+    background: rgba(26, 24, 20, 0.9);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(205, 164, 94, 0.2);
+}
+
+.stats-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--gold);
+    margin: 1rem 0;
+}
+
+.stats-label {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .stats-card {
+        margin-bottom: 1rem;
+    }
+}
+
+#overview .col-12.col-sm-6.col-lg-3{
+    width: 23%;
+}
+
+#overview .row.g-4{
+    justify-content: space-around;
+}
+
+#carousel .card-body .mb-4{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 30px 10px 0px;
+}
 
 
 
