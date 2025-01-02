@@ -12,10 +12,9 @@
     </ul>
     <h5>Settings</h5>
     <ul>
-            <li><a href="#main-carousel"><em class="fa fa-star"></em> Main Carousel</a></li>
             <li><a href="#testimonials"><em class="fa fa-envelope"></em> Testimonials</a></li>
             <li><a href="#gallery"><em class="fa fa-image"></em> Gallery</a></li>
-            <li><a href="#theaters"><em class="fa fa-image"></em> Theaters</a></li>
+            <li><a href="#theaters"><em class="fa fa-star"></em> Theaters</a></li>
             <li><a href="#subs"><em class="fa fa-envelope"></em> Subscribers</a></li>
     </ul>
 </div>

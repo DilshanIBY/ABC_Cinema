@@ -15,17 +15,24 @@
 <jsp:include page="temps/adminSidemenu.jsp" />
 
 <%
+// Fetch user details from session
+Integer userId = (Integer) session.getAttribute("userId");
+String userName = (String) session.getAttribute("userName");
+
+if (userId == null || userName == null) {
+    response.sendRedirect("login-register.jsp"); // Redirect to the login page
+    return;
+}    
+    
 // Database connection
 Connection conn = DatabaseConnection.getConnection();
 
 // Fetch tables
-List<Map<String, String>> menuItems = new ArrayList<>();
 List<Map<String, String>> movieItems = new ArrayList<>();
-List<Map<String, String>> eventItems = new ArrayList<>();
 List<Map<String, String>> userItems = new ArrayList<>();
 List<Map<String, String>> tesItems = new ArrayList<>();
-List<Map<String, String>> conItems = new ArrayList<>();
-List<Map<String, String>> mainItems = new ArrayList<>();
+List<Map<String, String>> resItems = new ArrayList<>();
+List<Map<String, String>> payItems = new ArrayList<>();
 List<Map<String, String>> feedItems = new ArrayList<>();
 List<Map<String, String>> imgItems = new ArrayList<>();
 List<Map<String, String>> mailItems = new ArrayList<>();
@@ -33,13 +40,11 @@ List<Map<String, String>> theaterItems = new ArrayList<>();
 List<Map<String, String>> subItems = new ArrayList<>();
 
 try {
-//    menuItems = DatabaseUtils.fetchTableData(conn, "SELECT * FROM menu");
     movieItems = DatabaseUtils.fetchTableData(conn, "SELECT * FROM movies");
-//    eventItems = DatabaseUtils.fetchTableData(conn, "SELECT * FROM events");
     userItems = DatabaseUtils.fetchTableData(conn, "SELECT * FROM users");
     tesItems = DatabaseUtils.fetchTableData(conn, "SELECT * FROM testimonials");
-//    conItems = DatabaseUtils.fetchTableData(conn, "SELECT * FROM contact");
-//    mainItems = DatabaseUtils.fetchTableData(conn, "SELECT * FROM home");
+    resItems = DatabaseUtils.fetchTableData(conn, "SELECT r.reservation_id, u.name AS user_name, m.title AS movie_name, t.name AS theater_name, r.reservation_date, r.seat_numbers, r.total_price, r.created_at FROM reservations r JOIN users u ON r.user_id = u.user_id JOIN movies m ON r.movie_id = m.movie_id JOIN theaters t ON r.theater_id = t.theater_id");
+    payItems = DatabaseUtils.fetchTableData(conn, "SELECT * FROM payments");
     feedItems = DatabaseUtils.fetchTableData(conn, "SELECT f.feedback_id, f.user_id, f.rating, f.description, f.created_at, u.name, u.profile_photo FROM feedback f INNER JOIN users u ON f.user_id = u.user_id");
     imgItems = DatabaseUtils.fetchTableData(conn, "SELECT * FROM gallery");
     mailItems = DatabaseUtils.fetchTableData(conn, "SELECT * FROM inquiries");
@@ -65,6 +70,139 @@ try {
         <!-- OVERVIEW Section -->
         <a class="anchor" name="overview"></a>
         <div class="row grid-responsive overview">
+            <!-- Overview Section -->
+            <section id="overview">
+                <h4 class="mb-4" style="color: var(--gold); border-bottom: 2px solid var(--gold); padding-bottom: 0.5rem;">
+                    Overview
+                </h4>
+                <div class="row g-4">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="stats-card">
+                            <div class="stats-label">Total Movies</div>
+                            <div class="stats-value">24</div>
+                            <div class="text-success d-flex align-items-center">
+                                <i class="fas fa-arrow-up me-2"></i>
+                                <span>12% increase</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="stats-card">
+                            <div class="stats-label">Reservations</div>
+                            <div class="stats-value">156</div>
+                            <div class="text-success d-flex align-items-center">
+                                <i class="fas fa-arrow-up me-2"></i>
+                                <span>8% increase</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="stats-card">
+                            <div class="stats-label">Revenue</div>
+                            <div class="stats-value">$12,845</div>
+                            <div class="text-success d-flex align-items-center">
+                                <i class="fas fa-arrow-up me-2"></i>
+                                <span>15% increase</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="stats-card">
+                            <div class="stats-label">Active Users</div>
+                            <div class="stats-value">1,243</div>
+                            <div class="text-success d-flex align-items-center">
+                                <i class="fas fa-arrow-up me-2"></i>
+                                <span>5% increase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Carousel Management Section -->
+            <section id="carousel" class="mt-5">
+                <h4 class="mb-4" style="color: var(--gold); border-bottom: 2px solid var(--gold); padding-bottom: 0.5rem;">
+                    Carousel Management
+                </h4>
+                <div class="card custom-table">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="assets/img/UM1.jpg" alt="Slide 1" class="rounded" style="max-width: 100px;">
+                                        </td>
+                                        <td>Latest Releases</td>
+                                        <td>Check out our newest movies this month!</td>
+                                        <td>
+                                            <span class="badge bg-success">Active</span>
+                                        </td>
+                                        <td>
+                                            <button class="button-outline btn btn-sm btn-gold me-2">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="button-outline btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="assets/img/UM2.jpeg" alt="Slide 2" class="rounded" style="max-width: 100px;">
+                                        </td>
+                                        <td>Special Offers</td>
+                                        <td>Get exclusive weekend discounts!</td>
+                                        <td>
+                                            <span class="badge bg-success">Active</span>
+                                        </td>
+                                        <td>
+                                            <button class="button-outline btn btn-sm btn-gold me-2">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="button-outline btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="assets/img/UM3.jpg" alt="Slide 3" class="rounded" style="max-width: 100px;">
+                                        </td>
+                                        <td>Coming Soon</td>
+                                        <td>Upcoming blockbusters next month!</td>
+                                        <td>
+                                            <span class="badge bg-secondary">Draft</span>
+                                        </td>
+                                        <td>
+                                            <button class="button-outline btn btn-sm btn-gold me-2">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="button-outline btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-end mb-4">
+                            <button class="btn btn-gold">
+                                <i class="fas fa-plus me-2"></i>Add New Slide
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </div>
         
@@ -164,12 +302,59 @@ try {
 
         
         
-        
+
         <!-- RESERVATIONS Section -->
         <a class="anchor" name="reservations"></a>
         <div class="row grid-responsive reservations">
-
+            <div class="column">
+                <div class="card">
+                    <div class="card-title">
+                        <h3>Reservations</h3>
+                    </div>
+                    <div class="card-block">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ticket ID</th>
+                                    <th>User</th>
+                                    <th>Movie</th>
+                                    <th>Theater</th>
+                                    <th>Reservation Date</th>
+                                    <th>Seat Numbers</th>
+                                    <th>Total Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (!resItems.isEmpty()) { %>
+                                    <% for (Map<String, String> item : resItems) { %>
+                                        <tr>
+                                            <td><%= item.get("reservation_id") %></td>
+                                            <td><%= item.get("user_name") %></td>
+                                            <td><%= item.get("movie_name") %></td>
+                                            <td><%= item.get("theater_name") %></td>
+                                            <td><%= item.get("reservation_date") %></td>
+                                            <td><%= item.get("seat_numbers") %></td>
+                                            <td><%= item.get("total_price") %></td>
+                                            <td>
+                                                <button class='deleteBtn button-outline' data-item-name='reservation_id' data-item-id='<%= item.get("reservation_id") %>'>
+                                                    <i class='fa fa-trash fa-lg'></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="8">No reservations found.</td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
+
         
         
         
@@ -178,7 +363,53 @@ try {
         <!-- PAYMENTS Section -->
         <a class="anchor" name="payments"></a>
         <div class="row grid-responsive payments">
-
+            <div class="column">
+                <div class="card">
+                    <div class="card-title">
+                        <h3>Payments</h3>
+                    </div>
+                    <div class="card-block">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Invoice ID</th>
+                                    <th>Ticket ID</th>
+                                    <th>Amount</th>
+                                    <th>Payment Method</th>
+                                    <th>Payment Status</th>
+                                    <th>Payment Date</th>
+                                    <th>Payment Time</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (!payItems.isEmpty()) { %>
+                                    <% for (Map<String, String> item : payItems) { %>
+                                        <tr>
+                                            <td><%= item.get("payment_id") %></td>
+                                            <td><%= item.get("reservation_id") %></td>
+                                            <td><%= item.get("amount") %></td>
+                                            <td><%= item.get("payment_method") %></td>
+                                            <td><%= item.get("payment_status") %></td>
+                                            <td><%= item.get("created_at").split(" ")[0] %></td>
+                                            <td><%= item.get("created_at").split(" ")[1] %></td>
+                                            <td>
+                                                <button class='deleteBtn button-outline' data-item-name='payment_id' data-item-id='<%= item.get("payment_id") %>'>
+                                                    <i class='fa fa-trash fa-lg'></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="8">No payments found.</td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
         
         

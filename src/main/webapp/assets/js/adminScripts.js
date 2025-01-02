@@ -41,83 +41,72 @@ $(document).ready(function () {
     });
 });
 
+// Handle Sidebar
+$(document).ready(function () {
+    // Smooth fade-in on sidebar click with active highlight
+    $('#sidebar a').click(function (e) {
+        e.preventDefault(); // Prevent default link behavior
 
-// Smooth fade-in on sidebar click
-$('#sidebar a').click(function (e) {
-    e.preventDefault(); // Prevent default link behavior
+        // Get the target section by name attribute
+        var target = $(this).attr('href').substring(1); // Remove the #
+        var section = $('a[name="' + target + '"]').next('.grid-responsive');
 
-    // Get the target section by name attribute
-    var target = $(this).attr('href').substring(1); // Remove the #
-    var section = $('a[name="' + target + '"]').next('.grid-responsive');
-
-    // Check if the section exists
-    if (section.length) {
-        // Fade out any visible section and fade in the target
-        $('.grid-responsive:visible').fadeOut(100, function () {
-            section.fadeIn(200);
-        });
-
-        // Scroll to the top of the section smoothly
-        $('html, body').animate({
-            scrollTop: section.offset().top
-        }, 1000);
-    } else {
-        console.error("Target section not found:", target);
-    }
-});
-
-
-
-
-
-// Sidebar controls
-function handleAnchorLinks() {
-    const sidebarLinks = $('#sidebar a[href^="#"]');
-    const offset = -40; // Adjusting the position
-
-    // Function to toggle active state on sidebar links based on scroll position
-    function toggleActiveState() {
-        const sections = $('.anchor');
-
-        $(window).on('scroll', () => {
-            let current = '';
-
-            sections.each(function() {
-                const sectionTop = $(this).offset().top;
-                const sectionHeight = $(this).outerHeight();
-                if ($(window).scrollTop() >= sectionTop - sectionHeight / 3) {
-                    current = $(this).attr('name');
-                }
+        // Check if the section exists
+        if (section.length) {
+            // Fade out any visible section and fade in the target
+            $('.grid-responsive:visible').fadeOut(100, function () {
+                section.fadeIn(200);
             });
 
-            sidebarLinks.removeClass('active').filter(`[href="#${current}"]`).addClass('active');
-        });
-    }
+            // Scroll to the top of the section smoothly
+            $('html, body').animate({
+                scrollTop: section.offset().top
+            }, 1000);
 
-    // Function to handle smooth scrolling to anchor links
-    function scrollToAnchor(anchor) {
-        const target = $(`[name=${anchor}]`);
-        if (target.length) {
-            const targetPosition = target.offset().top - offset;
-            $('html, body').scrollTop(targetPosition);
+            // Highlight the active sidebar link
+            $('#sidebar a').removeClass('active');
+            $(this).addClass('active');
+        } else {
+            console.error("Target section not found:", target);
         }
-    }
-
-    // Invoke the toggleActiveState function
-    toggleActiveState();
-
-    // Smooth scroll on anchor link click
-    sidebarLinks.on('click', function(e) {
-        e.preventDefault();
-        const href = $(this).attr('href');
-        const anchor = href.substring(1);
-        scrollToAnchor(anchor);
     });
-}
-// Invoke the function when the DOM is fully loaded
-$(document).ready(function() {
-    handleAnchorLinks();
+
+    // Update sidebar links' active state on scroll
+    $(window).on('scroll', function () {
+        const offset = -40; // Adjust the offset if needed
+        const sections = $('.anchor');
+        let current = '';
+
+        // Determine the current section
+        sections.each(function () {
+            const sectionTop = $(this).offset().top;
+            const sectionHeight = $(this).outerHeight();
+            if ($(window).scrollTop() >= sectionTop - sectionHeight / 3) {
+                current = $(this).attr('name');
+            }
+        });
+
+        // Highlight the current sidebar link
+        $('#sidebar a').removeClass('active').filter(`[href="#${current}"]`).addClass('active');
+    });
+
+    // Default section to load: Overview
+    const defaultSection = 'overview'; // Replace with your Overview section's name attribute
+    const section = $('a[name="' + defaultSection + '"]').next('.grid-responsive');
+
+    if (section.length) {
+        // Fade out other sections and show the Overview section
+        $('.grid-responsive').hide(); // Hide all sections
+        section.show(); // Show the Overview section
+
+        // Highlight the Overview link in the sidebar
+        $('#sidebar a').removeClass('active').filter(`[href="#${defaultSection}"]`).addClass('active');
+    } else {
+        console.error("Default section not found:", defaultSection);
+    }
 });
+
+
 
 
 
@@ -874,18 +863,6 @@ document.querySelectorAll('.edit-btn').forEach(button => {
     });
 });
 
-
-
-////////////////////////////////////
-/// ADMIN DASHBOARD Main Carousel Scripts ///
-////////////////////////////////////
-
-
-
-
-////////////////////////////////////
-/// ADMIN DASHBOARD Mini Carousel Scripts ///
-////////////////////////////////////
 
 
 

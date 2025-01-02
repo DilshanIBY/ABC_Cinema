@@ -12,11 +12,11 @@
                   <strong>Email: </strong>contact@abccinema.com<br>
                 </p>
                 <div class="social-links mt-3">
-                  <a href="contactUs.jsp" class="twitter"><i class="bx bxl-twitter"></i></a>
-                  <a href="contactUs.jsp" class="facebook"><i class="bx bxl-facebook"></i></a>
-                  <a href="contactUs.jsp" class="instagram"><i class="bx bxl-instagram"></i></a>
-                  <a href="contactUs.jsp" class="tiktok"><i class="bx bxl-tiktok"></i></a>
-                  <a href="contactUs.jsp" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                  <a href="inquireUs.jsp" class="twitter"><i class="bx bxl-twitter"></i></a>
+                  <a href="inquireUs.jsp" class="facebook"><i class="bx bxl-facebook"></i></a>
+                  <a href="inquireUs.jsp" class="instagram"><i class="bx bxl-instagram"></i></a>
+                  <a href="inquireUs.jsp" class="tiktok"><i class="bx bxl-tiktok"></i></a>
+                  <a href="inquireUs.jsp" class="linkedin"><i class="bx bxl-linkedin"></i></a>
                 </div>
               </div>
             </div>
@@ -27,8 +27,8 @@
                 <li><i class="bx bx-chevron-right"></i> <a href="index.jsp">Home</a></li>
                 <li><i class="bx bx-chevron-right"></i> <a href="index.jsp#gallery">Gallery</a></li>
                 <li><i class="bx bx-chevron-right"></i> <a href="index.jsp#testimonials">Testimonials</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="contactUs.jsp">Terms of service</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="contactUs.jsp">Privacy policy</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="inquireUs.jsp">Terms of service</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="inquireUs.jsp">Privacy policy</a></li>
               </ul>
             </div>
 
@@ -39,19 +39,27 @@
                 <li><i class="bx bx-chevron-right"></i> <a href="movies.jsp">Movies</a></li>
                 <li><i class="bx bx-chevron-right"></i> <a href="profile.jsp">Profile</a></li>
                 <li><i class="bx bx-chevron-right"></i> <a href="feedback.jsp">Feedback</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="contactUs.jsp">Contact Us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="inquireUs.jsp">inquire Us</a></li>
               </ul>
             </div>
               
-            <div class="col-lg-4 col-md-6 footer-newsletter">
-              <h4>Our Newsletter</h4>
-              <p>Stay connected with ABC CINEMA.<br>
-                Stay updated with the latest movie releases and exclusive deals !</p>
-                <form action="functions/subscribe-function.java" method="post">
-                    <input type="email" name="email" placeholder="Enter your Email">
+            <div class="col-lg-4 col-md-6 footer-newsletter" id="newsletter">
+                <h4>Our Newsletter</h4>
+                <p>Stay connected with ABC CINEMA.<br>
+                   Stay updated with the latest movie releases and exclusive deals!</p>
+                <form action="subscribe" method="post">
+                    <!-- Placeholder dynamically displays the message -->
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="<%= request.getParameter("message") != null ? request.getParameter("message") : "Enter your Email" %>" 
+                        required>
                     <input type="submit" value="Subscribe">
+                    <input type="hidden" name="current_url" value="<%= request.getRequestURI() %>">
                 </form>
             </div>
+
+
 
           </div>
         </div>

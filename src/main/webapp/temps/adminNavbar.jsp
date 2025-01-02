@@ -1,3 +1,15 @@
+<%
+// Fetch user details from session
+Integer userId = (Integer) session.getAttribute("userId");
+String userName = (String) session.getAttribute("userName");
+String userPhoto = (String) session.getAttribute("userPhoto");
+
+if (userId == null || userName == null) {
+    response.sendRedirect("login-register.jsp"); // Redirect to the login page
+    return;
+}   
+%>
+
 <!-- NAVIGATION -->
 <div class="navbar">
         <div class="row">
@@ -7,9 +19,9 @@
                 </div>
                 <div class="column column-30">
                         <div class="user-section"><a href="#">
-                                <img src="assets/img/testimonials/testimonials-1.jpg" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto" />
+                                <img src="<%= userPhoto != null ? userPhoto : "assets/img/testimonials/testimonials-2.jpg" %>" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto" />
                                 <div class="username">
-                                        <h4>Dilshan Irugal</h4>
+                                        <h4><%= userName %></h4>
                                         <p>Administrator</p>
                                 </div>
                         </a></div>

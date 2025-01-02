@@ -1,32 +1,27 @@
-// Placeholder content for Payment.java
+package models;
+
 public class Payment {
-    private int paymentId;
-    private int reservationId;
+    private String paymentId;
+    private String reservationId;
     private double amount;
     private String paymentMethod;
-    private boolean isSuccessful;
+    private String paymentStatus;
+    private String createdAt;
 
-    public Payment(int paymentId, int reservationId, double amount, String paymentMethod, boolean isSuccessful) {
-        this.paymentId = paymentId;
-        this.reservationId = reservationId;
-        this.amount = amount;
-        this.paymentMethod = paymentMethod;
-        this.isSuccessful = isSuccessful;
-    }
-
-    public int getPaymentId() {
+    // Getters and Setters
+    public String getPaymentId() {
         return paymentId;
     }
 
-    public void setPaymentId(int paymentId) {
+    public void setPaymentId(String paymentId) {
         this.paymentId = paymentId;
     }
 
-    public int getReservationId() {
+    public String getReservationId() {
         return reservationId;
     }
 
-    public void setReservationId(int reservationId) {
+    public void setReservationId(String reservationId) {
         this.reservationId = reservationId;
     }
 
@@ -46,22 +41,19 @@ public class Payment {
         this.paymentMethod = paymentMethod;
     }
 
-    public boolean isSuccessful() {
-        return isSuccessful;
+    public String getPaymentStatus() {
+        return paymentStatus;
     }
 
-    public void setSuccessful(boolean successful) {
-        isSuccessful = successful;
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 
-    @Override
-    public String toString() {
-        return "Payment{" +
-                "paymentId=" + paymentId +
-                ", reservationId=" + reservationId +
-                ", amount=" + amount +
-                ", paymentMethod='" + paymentMethod + '\'' +
-                ", isSuccessful=" + isSuccessful +
-                '}';
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 }
