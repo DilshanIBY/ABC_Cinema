@@ -1,7 +1,5 @@
 # Welcome to ABC_Cinema
 
-
-
 ## Default Login Details
 - Email     - dilshaniru@gmail.com
 - Password  - password123
@@ -9,14 +7,10 @@
 (You can also create your own account and sign up as a new user. But you will not get access to the Admin Dashboard!)
 
 
-
-
 ## Admin Dashboard Access
-Please navigate to the "Profile Page(profile.jsp)" and you will see a button called "Admin Dashboard".
+- Please navigate to the "Profile Page(profile.jsp)" and you will see a button called "Admin Dashboard".
 
 (Make sure you Sign In as an Admin)
-
-
 
 
 ## Paypal payments & Email Notifications
@@ -26,10 +20,8 @@ Please navigate to the "Profile Page(profile.jsp)" and you will see a button cal
 - You'll receive Reservation & Cancellation E-mail Notifications to your registered E-mail address in no time!
 
 
-
-
 ## Chatbot [ANY]
-You can ask almost anything from any.
+- You can ask almost anything from any.
 
 1) It can provide answers to any kind of common questions
    - What are the movies in the show today? [ Inside the subject / Related to the App ]
